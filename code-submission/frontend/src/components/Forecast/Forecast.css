@@ -1,0 +1,11 @@
+.departure-code{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.arrival-code{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
