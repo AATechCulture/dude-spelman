@@ -1,7 +1,7 @@
-import "./styles.css";
+import "./App.css";
 import { Route, Routes } from "react-router-dom";
-import Home from "./routes/ReCancellation";
-import About from "./routes/PostCancellation";
+import PreCancellation from "./routes/PreCancellation";
+import PostCancellation from "./routes/PostCancellation";
 export default function App() {
   return (
     <div className="App">
