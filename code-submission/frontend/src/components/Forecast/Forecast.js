@@ -7,18 +7,22 @@ const Forecast = () => {
 
   return (
     <div>
+      <h1 className="title">Pre-Cancellation Metrics</h1>
+      <h2 className="sub-title">Departure Airport Forecast</h2>
       <div className="departure-code">
-        <h1 type="text" value={departureCode}>
+        <h3 type="text" value={departureCode}>
           Enter Departure Airport Code:
-        </h1>
+        </h3>
         <input />
       </div>
       {/* For forecast info based on airport departure city */}
       <br />
+      <h2>Arrival Airport Forecast</h2>
+
       <div className="arrival-code">
-        <h1 type="text" value={arrivalCode}>
+        <h3 type="text" value={arrivalCode}>
           Enter Arrival Airport Code:
-        </h1>
+        </h3>
         <input />
       </div>
       {/* For forecast info based on airport arrival city */}

@@ -4,12 +4,12 @@ export const MenuItems = [
       title : "Cancellation Rating",
       url : "/",
       cName : "nav-links",
-      icon : "fa-solid fa-house-user"
+      icon : "fa-solid fa-plane-departure"
     },
     {
       title : "Post Cancellation",
       url : "/post-cancellation",
       cName : "nav-links",
-      icon : "fa-solid fa-circle-info"
+      icon : "fa-solid fa-triangle-exclamation"
     },
   ];
