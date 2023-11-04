@@ -7,14 +7,14 @@ airports = airportsdata.load("IATA")
 # atlData = pd.read_csv('code-submission/backend/dataset/ATL_2010_23.csv')
 
 
-def getFlightsCancelNum(departDate: str, airportCode: str):
+def getFlightCancelNum(departDate: str, airportCode: str):
     """
     Desc: Retrieves the # of Canceled Flights on a given date from an airport solely due to Extreme Weather
     Input:
         departDate - String in "Month/Date/Year" Format. Ex: "10/25/2023"
         airportCode - String in the IATA Format for airport identification. Ex: "JFK"
     Output:
-        Int
+        Integer of the Canceled Flights on a given date
     """
     airlineData = pd.read_csv(
         f"code-submission/backend/dataset/{airportCode}_2010_23.csv", sep=","
@@ -23,7 +23,14 @@ def getFlightsCancelNum(departDate: str, airportCode: str):
 
 
 def getFlightCancelPer(departDate: str, airportCode: str):
-    """ """
+    """
+    Desc: Retrieves the % of Canceled Flights on a given date from an airport solely due to Extreme Weather
+    Input:
+        departDate - String in "Month/Date/Year" Format. Ex: "10/25/2023"
+        airportCode - String in the IATA Format for airport identification. Ex: "JFK"
+    Output:
+        Integer of the % of Canceled Flights on a given date
+    """
     airlineData = pd.read_csv(
         f"code-submission/backend/dataset/{airportCode}_2010_23.csv", sep=","
     )
@@ -38,4 +45,4 @@ def getDataTotData(departDate: str, airportCode: str):
     return airlineData[airlineData["Date"] == departDate]
 
 
-getFlightsCancelNum("1/9/10", "ATL")
+getFlightCancelPer("1/9/10", "ATL")
