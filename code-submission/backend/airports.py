@@ -51,14 +51,16 @@ def getDataTotData(departDate: str, airportCode: str):
 
 def dateCleanup(incomingDate:str):
     dateSplit = incomingDate.split('/')
-    print(dateSplit)
+    #print(dateSplit)
     if dateSplit[0][0]=='0':
         dateSplit[0] = dateSplit[0][1:]
     if dateSplit[1][0]=='0':
         dateSplit[1] = dateSplit[1][1:]
+    if len(dateSplit[2])==4:
+        dateSplit[2] = dateSplit[2][2:]
     result = ""
     for value in dateSplit:
         result+=value+"/"
     return result[0:-1]
-#print(dateCleanup("1/02/2020"))
+print(getDataTotData(dateCleanup("1/02/2020"),"ATL"))
 #print(getDataTotData("1/9/10", "ATL"))
