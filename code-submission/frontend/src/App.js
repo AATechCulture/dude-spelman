@@ -7,11 +7,10 @@ export default function App() {
     <div className="App">
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<PreCancellation />}/>
-          <Route path="/post-cancellation" element={<PostCancellation />}/>       
+          <Route path="/" element={<PreCancellation />} />
+          <Route path="/post-cancellation" element={<PostCancellation />} />
         </Routes>
       </BrowserRouter>
-      
     </div>
   );
 }
