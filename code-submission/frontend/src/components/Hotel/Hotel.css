@@ -1,5 +1,5 @@
 img { 
-    height: 200px; 
+    height: 100px; 
 }
 
 .Hyatt-logo{
@@ -26,4 +26,12 @@ img {
     border: 5px solid #000;
     background-color: #C7D0D7;
    
+}
+
+@media screen and (max-width:850px){
+    
+    .hotel-info-card{
+        flex-direction: column;
+    }
+    
 }
