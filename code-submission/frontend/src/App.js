@@ -1,25 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
+import "./styles.css";
+import { Route, Routes } from "react-router-dom";
+import Home from "./routes/ReCancellation";
+import About from "./routes/PostCancellation";
+export default function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      
+      <Routes>
+        <Route path="/" element={<PreCancellation />}/>
+        <Route path="/post-cancellation" element={<PostCancellation />}/>       
+      </Routes>
+      
+      
+      
     </div>
   );
 }
-
-export default App;
