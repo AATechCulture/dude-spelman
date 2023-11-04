@@ -1,4 +1,4 @@
-﻿Airport,Date,Total Flights,Unaffected Flights,Unaffected Percentage,Affected Flights,Affected Percentage
+﻿Airport,Date,Total_Flights,Unaffected_Flights,Unaffected_Percentage,Canceled_Flights,Canceled_Percentage
 JFK,1/1/10,314,314,100,0,0
 JFK,1/2/10,320,309,96.56,11,3.44
 JFK,1/3/10,317,310,97.79,7,2.21

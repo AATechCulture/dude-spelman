@@ -77,6 +77,6 @@ def get_cancellation_percentage(flight_number: str, flight_date: str) -> float:
 
 
 # get_cancellation_percentage(
-#     "1048",
+#     "7373",
 #     "2023-11-05",
 # )
