@@ -1,0 +1,19 @@
+.title{
+    margin-top: 150px;
+
+}
+.sub-title{
+    margin-top: 75px;
+}
+.departure-code{
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.arrival-code{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
