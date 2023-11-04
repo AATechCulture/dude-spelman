@@ -1,4 +1,5 @@
 import flight_engine
+import weather_data
 
 
 def get_cancellation_percentage(flight_number: str, flight_date: str) -> float:
@@ -15,10 +16,32 @@ def get_cancellation_percentage(flight_number: str, flight_date: str) -> float:
     home_code = flight_info["origin"]["code"]
     away_code = flight_info["destination"]["code"]
 
-    origin_coords = flight_engine.get_airport_info(home_code)
-    dest_coords = flight_engine.get_airport_info(away_code)
+    airport_origin = flight_engine.get_airport_info(home_code)
+    airport_dest = flight_engine.get_airport_info(away_code)
+
+    coords_origin = (
+        str(airport_origin["location"]["latitude"]),
+        str(airport_origin["location"]["longitude"]),
+    )
+    coords_destination = (
+        str(airport_dest["location"]["latitude"]),
+        str(airport_dest["location"]["longitude"]),
+    )
+    departure_time = flight_info["departureTime"]
+    arrival_time = flight_info["arrivalTime"]
+    print(departure_time)
+    print(coords_origin)
 
     # Get weather predictions for origin and destination airports.
+    origin_weather = weather_data.get_weather_data(
+        coords_origin[0], coords_origin[1], departure_time
+    )
+    dest_weather = weather_data.get_weather_data(
+        coords_destination[0], coords_destination[1], arrival_time
+    )
 
 
-# get_cancellation_percentage("3282", "2024-11-04")
+# get_cancellation_percentage(
+#     "5268",
+#     "2023-11-05",
+# )

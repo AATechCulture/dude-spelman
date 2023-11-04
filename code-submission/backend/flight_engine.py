@@ -44,5 +44,5 @@ def find_flight_info(flight_number: str, flight_date: str):
     return flight_info
 
 
-# print(get_flights_on_date("2024-11-05"))
-# find_flight_info("3282", "2024-11-04")
+# print(get_flights_on_date("2023-11-05"))
+# find_flight_info("5268", "2023-11-05")

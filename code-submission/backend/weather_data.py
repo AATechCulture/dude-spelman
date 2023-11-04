@@ -5,7 +5,7 @@ import requests
 # latitude = "-122.31" [string]
 # departue_times = "2023-11-04T13:00:00-05:00" [string]
 
-def get_weather_data(longitude, latitude, departue_time):
+def get_weather_data(longitude, latitude, departure_time):
     """
     Fetches weather data for a specific location and time.
 
@@ -25,8 +25,8 @@ def get_weather_data(longitude, latitude, departue_time):
     seven_day_hourly_forecast = requests.get(weather_data['properties']["forecastHourly"]).json()
 
     for period in seven_day_hourly_forecast['properties']['periods']:
-        if departue_time >= period['startTime'] and departue_time <= period['endTime']:
+        if departure_time >= period['startTime'] and departure_time <= period['endTime']:
             return period 
     return None
 
-print(get_weather_data("47.45", "-122.31", "2023-11-04T13:00:00-05:00"))
+# print(get_weather_data("47.45", "-122.31", "2023-11-04T15:00:00-05:00"))
