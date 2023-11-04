@@ -6,16 +6,15 @@ import requests
 # departue_times = "2023-11-04T13:00:00-05:00" [string]
 
 def get_weather_data(longitude, latitude, departure_time):
-    """
-    Fetches weather data for a specific location and time.
+    """Fetches weather data for a specific location and time.
 
     This function takes geographical coordinates (longitude and latitude) and a departure time,
     then makes a request to the National Weather Service API to retrieve the hourly weather forecast.
 
-    Parameters:
-    - longitude (str): The longitude of the location
-    - latitude (str): The latitude of the location
-    - departure_time (str): The ISO 8601 formatted date and time
+    Input:
+      longitude (str): The longitude of the location
+      latitude (str): The latitude of the location
+      departure_time (str): The ISO 8601 formatted date and time
 
     Returns:
     weather data for the specified time period. If no matching time period is found in the forecast data, None is returned.
