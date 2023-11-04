@@ -1,0 +1,29 @@
+img { 
+    height: 200px; 
+}
+
+.Hyatt-logo{
+    max-width: 800px;
+    margin: auto;
+    padding: 10px;
+    border: 5px solid #000;
+    background-color: #C7D0D7;
+}
+
+.IHG-logo{
+    max-width: 800px;
+    margin: auto;
+    padding: 10px;
+    border: 5px solid #000;
+    background-color: #0D73B1;
+
+}
+
+.Marriot-logo{
+    max-width: 800px;
+    margin: auto;
+    padding: 10px;
+    border: 5px solid #000;
+    background-color: #C7D0D7;
+   
+}

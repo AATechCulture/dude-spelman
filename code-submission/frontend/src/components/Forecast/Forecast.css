@@ -1,11 +1,28 @@
-.departure-code{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.arrival-code{
-    display: flex;
-    align-items: center;
-    justify-content: center;
+/* Forecast.css */
 
-}
+.forecast-container {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+    background-color: #f8f8f8;
+    border-radius: 10px;
+  }
+  
+  .departure-code,
+  .arrival-code {
+    margin-bottom: 20px;
+  }
+  
+  h1 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: #333;
+  }
+  
+  input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding-right: 10px;
+  }

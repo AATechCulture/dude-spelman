@@ -6,20 +6,24 @@ const Forecast = () => {
   const [arrivalCode, setArrivalCode] = useState("");
 
   return (
-    <div>
+    <div className="forecast-container">
       <div className="departure-code">
-        <h1 type="text" value={departureCode}>
-          Enter Departure Airport Code:
-        </h1>
-        <input />
+        <h1>Enter Departure Airport Code:</h1>
+        <input
+          type="text"
+          value={departureCode}
+          onChange={(e) => setDepartureCode(e.target.value)}
+        />
       </div>
       {/* For forecast info based on airport departure city */}
       <br />
       <div className="arrival-code">
-        <h1 type="text" value={arrivalCode}>
-          Enter Arrival Airport Code:
-        </h1>
-        <input />
+        <h1>Enter Arrival Airport Code:</h1>
+        <input
+          type="text"
+          value={arrivalCode}
+          onChange={(e) => setArrivalCode(e.target.value)}
+        />
       </div>
       {/* For forecast info based on airport arrival city */}
     </div>
