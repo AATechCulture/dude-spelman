@@ -9,6 +9,15 @@ def get_cancellation_percentage(flight_number: str, flight_date: str) -> float:
     airports, historical cancellation data, etc.) to make an accurate
     prediction on what chance there is that the plane may be cancelled due to
     a severe weather scenario.
+
+    Input:
+      flight_number (str): A string representation of an AA flight number.
+      flight_date (str): A string representation of a flight's departure date
+        with the format YYYY-MM-DD.
+
+    Returns:
+      A float representing the estimated percentage chance of the given flight
+      to be cancelled due to severe weather complications.
     """
 
     # Get origin and destination airport information.
