@@ -17,6 +17,8 @@ const Forecast = () => {
       </div>
       {/* For forecast info based on airport departure city */}
       <br />
+      <h2>Arrival Airport Forecast</h2>
+
       <div className="arrival-code">
         <h1>Enter Arrival Airport Code:</h1>
         <input

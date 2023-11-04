@@ -61,7 +61,7 @@ Link{
 }
 
 .nav-links:hover {
-    background-color: #000;
+    background-color: #B61F23;
     color: #fff;
     border-radius: 4px;
     transition: all 0.2s ease-in-out;
@@ -92,7 +92,7 @@ button:hover {
 }
 
 /* Smaller Screen styles */
-@media screen and (max-width: 1350px) {
+@media screen and (max-width: 950px) {
 
     .NavbarItems {
         z-index: 99;
