@@ -19,7 +19,9 @@ def getFlightCancelNum(departDate: str, airportCode: str):
     airlineData = pd.read_csv(
         f"code-submission/backend/dataset/{airportCode}_2010_23.csv", sep=","
     )
-    return airlineData[airlineData["Date"] == dateCleanup(departDate)]["Canceled_Flights"]
+    return airlineData[airlineData["Date"] == dateCleanup(departDate)][
+        "Canceled_Flights"
+    ]
 
 
 def getFlightCancelPer(departDate: str, airportCode: str):
@@ -34,7 +36,9 @@ def getFlightCancelPer(departDate: str, airportCode: str):
     airlineData = pd.read_csv(
         f"code-submission/backend/dataset/{airportCode}_2010_23.csv", sep=","
     )
-    return airlineData[airlineData["Date"] == dateCleanup(departDate)]["Canceled_Percentage"]
+    return airlineData[airlineData["Date"] == dateCleanup(departDate)][
+        "Canceled_Percentage"
+    ]
 
 
 def getDataTotData(departDate: str, airportCode: str):
@@ -49,18 +53,21 @@ def getDataTotData(departDate: str, airportCode: str):
     )
     return airlineData[airlineData["Date"] == dateCleanup(departDate)]
 
-def dateCleanup(incomingDate:str):
-    dateSplit = incomingDate.split('/')
-    #print(dateSplit)
-    if dateSplit[0][0]=='0':
+
+def dateCleanup(incomingDate: str):
+    dateSplit = incomingDate.split("/")
+    # print(dateSplit)
+    if dateSplit[0][0] == "0":
         dateSplit[0] = dateSplit[0][1:]
-    if dateSplit[1][0]=='0':
+    if dateSplit[1][0] == "0":
         dateSplit[1] = dateSplit[1][1:]
-    if len(dateSplit[2])==4:
+    if len(dateSplit[2]) == 4:
         dateSplit[2] = dateSplit[2][2:]
     result = ""
     for value in dateSplit:
-        result+=value+"/"
+        result += value + "/"
     return result[0:-1]
+
+
 # print(getDataTotData(dateCleanup("1/02/2020"),"ATL"))
-#print(getDataTotData("1/9/10", "ATL"))
+# print(getDataTotData("1/9/10", "ATL"))
