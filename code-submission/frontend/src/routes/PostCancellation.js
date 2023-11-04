@@ -1,14 +1,12 @@
-import AltFlights from "../components/AltFlights/AltFlights"
-import Navbar from "../components/Navbar/Navbar"
-function PostCancellation() {
+import React from "react";
+import Hotel from "../components/Hotel/Hotel";
+
+const PostCancellation = () => {
   return (
-    <>
-    <Navbar />
-    <AltFlights />
-    
-    
-    </>
+    <div>
+      <Hotel />
+    </div>
   );
-}
+};
 
 export default PostCancellation;
