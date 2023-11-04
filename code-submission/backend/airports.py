@@ -19,7 +19,7 @@ def getFlightCancelNum(departDate: str, airportCode: str):
     airlineData = pd.read_csv(
         f"code-submission/backend/dataset/{airportCode}_2010_23.csv", sep=","
     )
-    return airlineData[airlineData["Date"] == departDate]["Canceled_Flights"]
+    return airlineData[airlineData["Date"] == dateCleanup(departDate)]["Canceled_Flights"]
 
 
 def getFlightCancelPer(departDate: str, airportCode: str):
@@ -29,20 +29,36 @@ def getFlightCancelPer(departDate: str, airportCode: str):
         departDate - String in "Month/Date/Year" Format. Ex: "10/25/2023"
         airportCode - String in the IATA Format for airport identification. Ex: "JFK"
     Output:
-        Integer of the % of Canceled Flights on a given date
+        Float of the % of Canceled Flights on a given date
     """
     airlineData = pd.read_csv(
         f"code-submission/backend/dataset/{airportCode}_2010_23.csv", sep=","
     )
-    return airlineData[airlineData["Date"] == departDate]["Canceled_Percentage"]
+    return airlineData[airlineData["Date"] == dateCleanup(departDate)]["Canceled_Percentage"]
 
 
 def getDataTotData(departDate: str, airportCode: str):
-    """ """
+    """
+    Desc: Retrieves the Total Data of Flights on from an airport solely due to Extreme Weather
+    Input:
+        departDate - String in "Month/Date/Year" Format. Ex: "10/25/2023"
+        airportCode - String in the IATA Format for airport identification. Ex: "JFK"
+    """
     airlineData = pd.read_csv(
         f"code-submission/backend/dataset/{airportCode}_2010_23.csv", sep=","
     )
-    return airlineData[airlineData["Date"] == departDate]
+    return airlineData[airlineData["Date"] == dateCleanup(departDate)]
 
-
-getFlightCancelPer("1/9/10", "ATL")
+def dateCleanup(incomingDate:str):
+    dateSplit = incomingDate.split('/')
+    print(dateSplit)
+    if dateSplit[0][0]=='0':
+        dateSplit[0] = dateSplit[0][1:]
+    if dateSplit[1][0]=='0':
+        dateSplit[1] = dateSplit[1][1:]
+    result = ""
+    for value in dateSplit:
+        result+=value+"/"
+    return result[0:-1]
+#print(dateCleanup("1/02/2020"))
+#print(getDataTotData("1/9/10", "ATL"))
