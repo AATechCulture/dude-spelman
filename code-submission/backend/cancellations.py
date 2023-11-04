@@ -62,5 +62,5 @@ def dateCleanup(incomingDate:str):
     for value in dateSplit:
         result+=value+"/"
     return result[0:-1]
-print(getDataTotData(dateCleanup("1/02/2020"),"ATL"))
+# print(getDataTotData(dateCleanup("1/02/2020"),"ATL"))
 #print(getDataTotData("1/9/10", "ATL"))

@@ -1,5 +1,8 @@
 import flight_engine
 import weather_data
+import cancellations
+import dateutil
+import datetime
 
 
 def get_cancellation_percentage(flight_number: str, flight_date: str) -> float:
@@ -38,8 +41,6 @@ def get_cancellation_percentage(flight_number: str, flight_date: str) -> float:
     )
     departure_time = flight_info["departureTime"]
     arrival_time = flight_info["arrivalTime"]
-    print(departure_time)
-    print(coords_origin)
 
     # Get weather predictions for origin and destination airports.
     origin_weather = weather_data.get_weather_data(
@@ -49,8 +50,33 @@ def get_cancellation_percentage(flight_number: str, flight_date: str) -> float:
         coords_destination[0], coords_destination[1], arrival_time
     )
 
+    # Get historic cancellation percentages due to severe weather.
+    departure_date = cancellations.dateCleanup(
+        (
+            dateutil.parser.parse(departure_time).date()
+            - dateutil.relativedelta.relativedelta(years=5)
+        ).strftime("%m/%d/%Y")
+    )
+
+    arrival_date = cancellations.dateCleanup(
+        (
+            dateutil.parser.parse(arrival_time).date()
+            - dateutil.relativedelta.relativedelta(years=5)
+        ).strftime("%m/%d/%Y")
+    )
+
+    history_percentage_origin = cancellations.getFlightCancelPer(
+        departure_date, home_code
+    )
+    history_percentage_dest = cancellations.getFlightCancelPer(
+        arrival_date, away_code
+    )
+
+    # print(history_percentage_origin)
+    # print(history_percentage_dest)
+
 
 # get_cancellation_percentage(
-#     "5268",
+#     "1048",
 #     "2023-11-05",
 # )

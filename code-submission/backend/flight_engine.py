@@ -55,7 +55,8 @@ def get_flights_on_date(date: str) -> Dict:
     # Transform into dict that can be refrenced easily.
     result = {}
     for flight in response.json():
-        result[flight["flightNumber"]] = flight
+        if flight["origin"]["code"] == "ATL":
+            result[flight["flightNumber"]] = flight
     return result
 
 
@@ -82,5 +83,6 @@ def find_flight_info(flight_number: str, flight_date: str) -> Dict:
     return flight_info
 
 
-# print(get_flights_on_date("2023-11-05"))
-# find_flight_info("5268", "2023-11-05")
+# print(get_flights_on_date("2015-11-05"))
+# print(find_flight_info("1048", "2023-11-05"))
+# print(find_flight_info("1048", "2023-11-05")) (old example)
