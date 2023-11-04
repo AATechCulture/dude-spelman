@@ -16,7 +16,7 @@ class Navbar extends Component {
     return (
       <nav className="NavbarItems">
         
-        <h1 className="navbar-logo">Super Cool Navbar</h1>
+        <h1 className="navbar-logo">Weather Wise</h1>
 
         <div className="menu-icons" onClick={this.handleClick}>
           <i

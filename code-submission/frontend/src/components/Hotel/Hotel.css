@@ -1,7 +1,9 @@
 img { 
     height: 200px; 
 }
-
+.hotel-info{
+    margin-top: 150px;
+}
 .Hyatt-logo{
     max-width: 800px;
     margin: auto;
