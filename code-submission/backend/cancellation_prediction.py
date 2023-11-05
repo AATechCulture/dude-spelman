@@ -108,7 +108,6 @@ def get_cancellation_percentage(flight_number: str, flight_date: str) -> float:
 
     df = historical_weather_data.create_data_frame(historical_data, home_code)
 
-
     # Format date correctly 
     flight_date = datetime.strptime(flight_date, '%Y-%m-%d')
     formatted_date = cancellations.dateCleanup(str(flight_date.strftime('%m/%d/%Y')))
