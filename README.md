@@ -17,17 +17,17 @@ The primary target audience for Weather Wise includes frequent flyers, travel pl
 Frontend: React JS
 Backend: Flask
 
-National Weather Service (NWS) API
-Historical Weather API
-Amadeus flight information API
-Uber API
-American Airlines Flight engine API
-Tensorflow Keras API
-Google Colab to train Neural Network
-DrawIO for system designs
-FAA ASPQ Database
-Pandas & Numpy to transform data
-
+* National Weather Service (NWS) API
+* Historical Weather API
+* Amadeus flight information API
+* Uber API
+* American Airlines Flight engine API
+* Tensorflow Keras API
+* Google Colab to train Neural Network
+* DrawIO for system designs
+* FAA ASPQ Database
+* Pandas & Numpy to transform data
+<img src="./code-submission/neural_network/neural_network.drawio.png" alt="drawing" width="500"/>
 
 ### ✨ Contributors ✨
 **...tell the world who you and your team are 🙂**
