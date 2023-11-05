@@ -19,7 +19,7 @@ def predict_cancellation():
         flight_number, flight_date
     )
 
-    return result
+    return str(result)
 
 
 @app.route("/get-weather", methods=["GET"])
