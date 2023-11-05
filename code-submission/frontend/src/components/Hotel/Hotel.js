@@ -7,8 +7,8 @@ import { Link } from "react-router-dom";
 function Hotel() {
   return (
     <div className="hotel-info">
-      <h1>Earn AAvantage miles when you stay at these Hotels</h1>
-
+      <h1>Book your Hotels Here</h1>
+      <p>Earn AAvantage miles when you stay at these Hotels</p>
       <div className="hotel-info-card">
         <div className="Hyatt-logo">
           <Link to="https://www.hyatt.com/" target="_blank">
