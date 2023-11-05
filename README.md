@@ -32,7 +32,7 @@ American Airlines Flight engine API
 ### ✨ Contributors ✨
 **...tell the world who you and your team are 🙂**
 * Kevin Drew (E24EE72)
-* Zayden Chin
+* Zayden Chin (R5EY082)
 * Jovan Ford
 * Trent Gaylord
 * Elijah Truitt
@@ -47,7 +47,7 @@ Dude Spelman
 **...point us to where you tell us about your solution 😄**
 
 ### Link to Demo Presentation 📽
-**...point us to your PPT or Canva slides 😍**
+https://www.canva.com/design/DAFzRWlkwj8/HRtOxuFxmS8RG2gt8pBPrg/edit?utm_content=DAFzRWlkwj8&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
 
 ### Team Checklist due before 5p Saturday 11/4 ✅
 - [✅] Team photo
