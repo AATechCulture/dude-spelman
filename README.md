@@ -34,7 +34,7 @@ American Airlines Flight engine API
 * Kevin Drew (E24EE72)
 * Zayden Chin (R5EY082)
 * Jovan Ford
-* Trent Gaylord
+* Trent Gaylord (4RK53A0)
 * Elijah Truitt
 
 ### School Name 🏫
