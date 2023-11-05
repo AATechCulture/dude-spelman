@@ -80,8 +80,3 @@ def find_flight_info(flight_number: str, flight_date: str) -> Dict:
 
     flight_info = flight_db[flight_number]
     return flight_info
-
-
-# print(get_flights_on_date("2023-11-05"))
-# print(find_flight_info("7373", "2023-11-05"))
-# print(find_flight_info("1048", "2023-11-05")) (old example)

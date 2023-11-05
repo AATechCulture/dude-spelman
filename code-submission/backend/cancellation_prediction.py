@@ -80,11 +80,6 @@ def get_cancellation_percentage(flight_number: str, flight_date: str) -> float:
         arrival_date, away_code
     ).iloc[0]
 
-    # print(origin_weather)
-    # print(dest_weather)
-    # print(history_percentage_origin)
-    # print(history_percentage_dest)
-
     """
     Temperature ^2 * (0.15) + precipProb * (0.05) + humidity * (0.05) + windSpeed * (0.20) + shortForecast_weight * (0.25)
     """
