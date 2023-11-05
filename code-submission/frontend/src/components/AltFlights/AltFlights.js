@@ -8,7 +8,7 @@ const AltFlights = () => {
   useEffect(() => {
     const fetchFlightInfo = async () => {
       try {
-        const response = await axios.post('http://localhost:8000/', {
+        const response = await axios.post('http://localhost:8000/flight_info', {
           originLocationCode: 'MAD',
           destinationLocationCode: 'BOS',
           departureDate: '2023-11-06',
@@ -25,7 +25,7 @@ const AltFlights = () => {
 
 
   return (
-    <div>
+    <div get-info>
       <h1>Flight Information</h1>
       {flightData ? (
         <div>
