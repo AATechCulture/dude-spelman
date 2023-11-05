@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import flights from "../../assets/flights.png";
 import "./Forecast.css";
 
 const Forecast = () => {
@@ -7,7 +8,7 @@ const Forecast = () => {
   const [flightData, setFlightData] = useState({});
   const [weatherData, setWeatherData] = useState([]);
 
-  useEffect(() => {
+  const handleSubmit = () => {
     fetch(
       "/bonito-flakes?" +
         new URLSearchParams({
@@ -35,21 +36,32 @@ const Forecast = () => {
         console.log("weather data", data);
       })
       .catch((error) => console.error("Error:", error));
-  }, []);
+  };
 
   return (
     <div className="forecast-container">
       <h1 className="title">Pre-Cancellation Metrics</h1>
-      <h3>Flight Code:</h3>
-      <input
-        type="text"
-        id="departureCode"
-        value={flightCode}
-        onChange={(e) => setFlightCode(e.target.value)}
-      />
-      <div className="date-picker">
-        <label htmlFor="dateInput">Select a Date:</label>
-        <input type="date" id="dateInput" value={selectedDepartureDate} />
+      <div className="flight-code">
+        <h3>Flight Code:</h3>
+        <input
+          type="text"
+          id="departureCode"
+          value={flightCode}
+          onChange={(e) => setFlightCode(e.target.value)}
+        />
+        <div className="date-picker">
+          <label htmlFor="dateInput">Select a Date:</label>
+          <input type="date" id="dateInput" value={selectedDepartureDate} onChange={(e) => setSelectedDepartureDate(e.target.value)} />
+        </div>
+        <div className="submit">
+          {" "}
+          <input
+            className="submit-btn"
+            type="submit"
+            value="Submit"
+            onSubmit={handleSubmit}
+          ></input>
+        </div>
       </div>
       <h2 className="sub-title">Departure Airport Forecast</h2>
       <div className="departure-code"></div>
@@ -59,10 +71,6 @@ const Forecast = () => {
 
       <div className="arrival-code">
         <br />
-        <div className="submit">
-          {" "}
-          <input className="submit-btn" type="submit" value="Submit"></input>
-        </div>
       </div>
       {/* For forecast info based on airport arrival city weatherData?*/}
     </div>

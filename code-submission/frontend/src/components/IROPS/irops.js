@@ -11,12 +11,12 @@ function IROPS() {
   <>
     <div className="irops-container">
     <div className="irops-info">
-      <h1 className="irops-title">Why flights are canceled</h1>
+      <h1 className="irops-title">Why Flights Are Canceled</h1>
 
       <div className="irops-info-card">
         <IropsData
           image={img1}
-          link="https://www.google.com"
+          link="https://airadvisor.com/en/blog/what-to-do-when-flight-is-cancelled"
           heading="Weather"
           text="Bad weather can lead to cancellations. Conditions like thunderstorms, snowstorms, heavy rain, 
           strong winds, and fog can significantly impact the safety of air travel. These weather conditions can affect a pilot's ability to take off, navigate, and land the aircraft safely. For instance, low visibility due to fog or heavy rain blurs the runway and impairs the pilot's sight.
@@ -27,7 +27,7 @@ function IROPS() {
         
         <IropsData
           image={img2}
-          link="https://www.google.com"
+          link="https://flyflapper.com/stories/reasons-to-cancel-a-flight-for-safety-reasons/"
           heading="Aircraft Conditions"
           text="Flight cancellation due to aircraft technical issues is not uncommon. 
           The procedure that determines these conditions is called a checklist, a 
@@ -39,7 +39,7 @@ function IROPS() {
         />
         <IropsData
           image={img3}
-          link="https://www.google.com"
+          link="https://airadvisor.com/en/blog/what-to-do-when-flight-is-cancelled"
           heading="Tight flight schedule"
           text="Tight flight schedules refer to the scheduling of flights 
           with very little time between arrivals and departures. One of the 
