@@ -10,12 +10,11 @@ app = Flask(__name__)
 
 @app.route("/predict-cancellation", methods=["GET"])
 def predict_cancellation():
-    data = request.get_json()
-    if not data:
+    if "flight_number" not in request.args or "flight_date" not in request.args:
         return Response(status=400)
 
-    flight_number = data["flight_number"]
-    flight_date = data["flight_date"]
+    flight_number = request.args["flight_number"]
+    flight_date = request.args["flight_date"]
     result = cancellation_prediction.get_cancellation_percentage(
         flight_number, flight_date
     )
@@ -25,12 +24,11 @@ def predict_cancellation():
 
 @app.route("/get-weather", methods=["GET"])
 def get_weather():
-    data = request.get_json()
-    if not data:
+    if "flight_number" not in request.args or "flight_date" not in request.args:
         return Response(status=400)
 
-    flight_number = data["flight_number"]
-    flight_date = data["flight_date"]
+    flight_number = request.args["flight_number"]
+    flight_date = request.args["flight_date"]
 
     flight_info = flight_engine.find_flight_info(flight_number, flight_date)
     airport_info = flight_engine.get_airport_info(flight_info["origin"]["code"])
@@ -48,17 +46,20 @@ def get_weather():
 
 @app.route("/flight_info", methods=["GET"])
 def get_flight_info():
-    
-    data = request.get_json()
-    if not data:
+    if not request.args:
         return Response(status=400)
-    
-    originLocationCode = data["origin_location_code"]
-    destinationLocationCode = data["destination_location_code"]
-    departureDate = data["departure_date"]
-    adults = data["adults"]
-    
-    return jsonify(flight_info.get_flight_info(originLocationCode, destinationLocationCode, departureDate, adults))
+
+    originLocationCode = request.args["origin_location_code"]
+    destinationLocationCode = request.args["destination_location_code"]
+    departureDate = request.args["departure_date"]
+    adults = request.args["adults"]
+
+    return jsonify(
+        flight_info.get_flight_info(
+            originLocationCode, destinationLocationCode, departureDate, adults
+        )
+    )
+
 
 if __name__ == "__main__":
     app.run(port=8000, debug=True)
