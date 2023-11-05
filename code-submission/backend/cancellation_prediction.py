@@ -7,6 +7,7 @@ import tensorflow as tf
 import historical_weather_data
 from sklearn.preprocessing import LabelEncoder
 import pandas as pd
+import pickle
 
 
 def load_savedmodel(path: str):
@@ -100,31 +101,41 @@ def get_cancellation_percentage(flight_number: str, flight_date: str) -> float:
     model = load_savedmodel("./model.h5")
 
     # Load historical weather data
-    historical_data = historical_weather_data.get_historical_weather_data_v1(
+    historical_data = historical_weather_data.get_historical_weather_data(
         airport_origin["location"]["latitude"],
-        flight_date,
-        flight_date
+        airport_origin["location"]["longitude"]
     )
 
     df = historical_weather_data.create_data_frame(historical_data, home_code)
 
-    # Assuming the DataFrame is populated.
 
+    # Format date correctly 
     flight_date = datetime.strptime(flight_date, '%Y-%m-%d')
     formatted_date = cancellations.dateCleanup(str(flight_date.strftime('%m/%d/%Y')))
     response = df[df['date'] == formatted_date]
 
+
+    # Load in tokenized data from model
+    with open('airport_encoder.pickle', 'rb') as file:
+        airport_encoder = pickle.load(file)
+
+    with open('month_encoder.pickle', 'rb') as file:
+        month_encoder = pickle.load(file)
+
+    month = str(response['date']).split('/')
+    month = month[0].replace(" ", "")[1:]
+
+    # Predict cancellation with model
     model_response = model.predict (
         pd.DataFrame({
-    "airport_encoded": [2],
-    "month_encoded": [12],
-    "Canceled_Flights": [31],
-    "weather_code": [75],
-    "temperature_2m_max": [4.1495],
-    "precipitation_sum": [37.9],
-    "rain_sum": [1.5],
-    "wind_speed_10m_max": [42.150757] }) )
-
+    "airport_encoded": airport_encoder.transform(response['airport']),
+    "month_encoded": month_encoder.transform([int(month)]),
+    "Canceled_Flights": [0],
+    "weather_code": response['weather_code'],
+    "temperature_2m_max": response['temperature_2m_max'],
+    "precipitation_sum": response['precipitation_sum'],
+    "rain_sum": response['rain_sum'],
+    "wind_speed_10m_max": response['wind_speed_10m_max'] }))
 
     percentage = (
         temp * 0.1

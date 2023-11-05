@@ -11,7 +11,7 @@ openmeteo = openmeteo_requests.Client(session = retry_session)
 
 airpot_long_lat_dict = cancellations.generateAirportLongLatDict()
 
-def get_historical_weather_data_v1(latitude, longitude):
+def get_historical_weather_data(latitude, longitude):
     """
     Fetches future weather data for a given geographical location using the Open-Meteo API.
 
