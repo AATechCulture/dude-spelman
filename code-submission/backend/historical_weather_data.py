@@ -5,7 +5,6 @@ import pandas as pd
 from retry_requests import retry
 import cancellations
 
-# Setup the Open-Meteo API client with cache and retry on error
 cache_session = requests_cache.CachedSession('.cache', expire_after = -1)
 retry_session = retry(cache_session, retries = 5, backoff_factor = 0.2)
 openmeteo = openmeteo_requests.Client(session = retry_session)
@@ -69,19 +68,28 @@ def create_csv_from_data_frame(responses, airport_codes):
         daily_dataframe = pd.DataFrame(data = daily_data)
         master_data_frame = pd.concat([master_data_frame, daily_dataframe], ignore_index=True)
 
-        # master_data_frame = master_data_frame.append(daily_dataframe, ignore_index=True)
-
     flight_data = pd.read_csv("backend/dataset/Top25-Flight-Weather-Interrupt.csv", sep=",")
+ 
     print(master_data_frame)
-    merged_data =pd.merge(flight_data, master_data_frame, on=["date", "airport"])
-
-    # for data in flight_data:
-
+    
+    merged_data = pd.merge(flight_data,master_data_frame, on=["date","airport"], how='outer')
+    merged_data.to_csv('New25.csv', index=False)
 
 responses = []
 keys = []
 for key in airpot_long_lat_dict.keys():
-    responses.append(get_historical_weather_data(airpot_long_lat_dict[key][0], airpot_long_lat_dict[key][1], "2023-10-17", "2023-10-31"))
+    responses.append(get_historical_weather_data(airpot_long_lat_dict[key][0], airpot_long_lat_dict[key][1], "2018-01-01", "2020-01-01"))
     keys.append(key)
 
 create_csv_from_data_frame(responses, keys)
+
+# trim the data set between to only include the years of 2018 and 2019
+
+df = pd.read_csv('backend/dataset/New25.csv')
+df['date'] = pd.to_datetime(df['date'], format='%m/%d/%y')
+
+start_date = pd.to_datetime('1/1/18')
+end_date = pd.to_datetime('12/31/19')
+
+df_filtered = df[(pd.to_datetime(df['date']) >= start_date) & (pd.to_datetime(df['date']) <= end_date)]
+df_filtered.to_csv('filtered_file.csv', index=False)
