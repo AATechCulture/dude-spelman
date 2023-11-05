@@ -69,19 +69,16 @@ def create_csv_from_data_frame(responses, airport_codes):
         daily_dataframe = pd.DataFrame(data = daily_data)
         master_data_frame = pd.concat([master_data_frame, daily_dataframe], ignore_index=True)
 
-        # master_data_frame = master_data_frame.append(daily_dataframe, ignore_index=True)
-
     flight_data = pd.read_csv("backend/dataset/Top25-Flight-Weather-Interrupt.csv", sep=",")
     print(master_data_frame)
-    merged_data =pd.merge(flight_data, master_data_frame, on=["date", "airport"])
-
-    # for data in flight_data:
-
+    #merged_data = pd.concat([flight_data, master_data_frame] ,keys=["date", "airport"])
+    merged_data = pd.merge(flight_data,master_data_frame, on=["date","airport"], how='outer')
+    merged_data.to_csv('New25.csv', index=False)
 
 responses = []
 keys = []
 for key in airpot_long_lat_dict.keys():
-    responses.append(get_historical_weather_data(airpot_long_lat_dict[key][0], airpot_long_lat_dict[key][1], "2023-10-17", "2023-10-31"))
+    responses.append(get_historical_weather_data(airpot_long_lat_dict[key][0], airpot_long_lat_dict[key][1], "2018-01-01", "2020-01-01"))
     keys.append(key)
 
 create_csv_from_data_frame(responses, keys)
