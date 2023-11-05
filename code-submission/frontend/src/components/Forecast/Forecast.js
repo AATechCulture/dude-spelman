@@ -5,6 +5,16 @@ const Forecast = () => {
   const [departureCode, setDepartureCode] = useState("");
   const [arrivalCode, setArrivalCode] = useState("");
   const [weatherData, setWeatherData] = useState(null);
+  const [selectedDepartureDate, setSelectedDepartureDate] = useState("");
+  const [selectedArrivalDate, setSelectedArrivalDate] = useState("");
+
+  const handleDepartureDateChange = (e) => {
+    setSelectedDepartureDate(e.target.value);
+  };
+
+  const handleArrivalDateChange = (e) => {
+    setSelectedArrivalDate(e.target.value);
+  };
 
   return (
     <div>
@@ -19,6 +29,16 @@ const Forecast = () => {
           onChange={(e) => setDepartureCode(e.target.value)}
           placeholder="e.g. JFK"
         />
+        <div>
+          <label htmlFor="dateInput">Select a Date:</label>
+          <input
+            type="date"
+            id="dateInput"
+            value={selectedDepartureDate}
+            onChange={handleDepartureDateChange}
+          />
+          <p>Selected Date: {selectedDepartureDate}</p>
+        </div>
       </div>
       {/* For forecast info based on airport departure city weatherData?*/}
       <br />
@@ -34,6 +54,16 @@ const Forecast = () => {
           onChange={(e) => setArrivalCode(e.target.value)}
           placeholder="e.g. LAX"
         />
+        <div>
+          <label htmlFor="dateInput">Select a Date:</label>
+          <input
+            type="date"
+            id="dateInput"
+            value={selectedArrivalDate}
+            onChange={handleArrivalDateChange}
+          />
+          <p>Selected Date: {selectedArrivalDate}</p>
+        </div>
       </div>
       {/* For forecast info based on airport arrival city weatherData?*/}
     </div>
