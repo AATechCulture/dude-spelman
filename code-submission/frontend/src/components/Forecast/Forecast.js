@@ -61,11 +61,12 @@ const Forecast = () => {
             value={selectedArrivalDate}
             onChange={handleArrivalDateChange}
           />
-          </div>
-          <br/>
-          <div className="submit"> <input className="submit-btn" type="submit" value="Submit"></input>
-          </div>
-          
+        </div>
+        <br />
+        <div className="submit">
+          {" "}
+          <input className="submit-btn" type="submit" value="Submit"></input>
+        </div>
       </div>
       {/* For forecast info based on airport arrival city weatherData?*/}
     </div>
