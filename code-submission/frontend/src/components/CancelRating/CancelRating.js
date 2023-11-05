@@ -4,7 +4,7 @@ import "./CancelRating.css";
 const CancelRating = ({
   
 }) => {
-  const [percentage, setPercentage] = useState(null);
+  const [percentage, setPercentage] = useState(0);
 
   useEffect(() => {
     fetch(
@@ -29,7 +29,7 @@ const CancelRating = ({
       <h1 className="rating">{percentage.toFixed(2)}%</h1>
       <p className="rating-explanation">
         The rating is the result of our flight cancellation algorithm which is
-        influenced by airport weather conditons.
+        influenced by airport weather conditions.
       </p>
     </div>
   );
