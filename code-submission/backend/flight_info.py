@@ -54,4 +54,4 @@ def get_flight_info(originLocationCode, destinationLocationCode, departureDate, 
         print(error)
         raise error
     
-# get_flight_offers('MAD', 'BOS', '2023-11-06', '1')
+# get_flight_info('MAD', 'BOS', '2023-11-06', '1')
