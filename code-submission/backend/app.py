@@ -53,7 +53,7 @@ def get_weather():
         long, lat, flight_info["departureTime"]
     )
 
-    return result  # JSON
+    return result
 
 
 @app.route("/flight_info", methods=["GET"])
