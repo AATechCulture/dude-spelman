@@ -4,6 +4,7 @@ import requests
 import weather_data
 import flight_engine
 from datetime import datetime, timedelta
+import dateutil
 
 
 airports = airportsdata.load("IATA")
@@ -90,12 +91,18 @@ def generateAirportLongLatDict():
 def getWeatherBetweenDates(start_date:datetime, end_date:datetime,lat:str,long:str):
     print("HI")
     current_date = start_date
-    while current_date <= end_date:
-        yield current_date
-        formatted_date = current_date.strftime("%m/%d/%Y")
+    while current_date.date() <= end_date.date():
+        #yield current_date
+        #formatted_date = current_date.strftime("%m/%d/%Y")
+        iso_time = current_date.strftime("%Y-%m-%dT%H:%M:%S%z")
+        print(iso_time)
         origin_weather = weather_data.get_weather_data(
-            lat,long,current_date
+            #"47.45", "-122.31", "2023-11-06T13:00:00-05:00"
+            #lat,long, "2023-11-04T13:00:00-05:00"
+            #iso_time
         )
+        #dateutil.parser.parse(current_date).date()
+        print(origin_weather)
         temp = origin_weather["temperature"]
         precipitation_prob = origin_weather["probabilityOfPrecipitation"]["value"]
         humidity = origin_weather["relativeHumidity"]["value"]
@@ -107,10 +114,11 @@ def getWeatherBetweenDates(start_date:datetime, end_date:datetime,lat:str,long:s
 
 def parseWeatherData():
     airportDict = generateAirportLongLatDict()
+    print(airportDict)
     for airCode in airportDict.keys():
         #print(datetime(2020,10,1)+timedelta(hours=12))
         #print(airportDict[airCode][0])
-        print(airportDict[airCode][1])
+        #print(airportDict[airCode][1])
         getWeatherBetweenDates(
             datetime(2020,10,1)+timedelta(hours=12),
             datetime(2020,10,5)+timedelta(hours=12),
