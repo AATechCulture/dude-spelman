@@ -26,7 +26,7 @@ const CancelRating = ({
       <h2 className="rating-header">
         The chance of your flight being cancelled is:
       </h2>
-      <h1 className="rating">{percentage}%</h1>
+      <h1 className="rating">{percentage.toFixed(2)}%</h1>
       <p className="rating-explanation">
         The rating is the result of our flight cancellation algorithm which is
         influenced by airport weather conditons.

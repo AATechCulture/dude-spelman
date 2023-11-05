@@ -4,7 +4,7 @@ import Uber from "../../assets/Uber.jpg"
 const Rideshare = () => {
   return (
     <div className="rideshare-info">
-    <h1>Uber to your Hotel</h1>
+    <h1>Uber To Your Hotel</h1>
     <p>Earn AAvantage miles when you ride with Uber</p>
     <div className="rideshare-info-card">
       <div className="rideshare-logo">

@@ -9,7 +9,7 @@ const Footer = () => {
         <img src={logo} alt="logo"/>
           <h1>Weather Wise</h1>
           <p>Know Before You Go</p>
-          <h3>Created By Dude Spelman for BE Hackathon 2023</h3>
+          <h4>Created By Morehouse College Team Dude Spelman for BE Hackathon 2023</h4>
         </div>
       </div>
 

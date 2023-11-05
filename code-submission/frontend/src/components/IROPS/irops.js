@@ -11,7 +11,7 @@ function IROPS() {
   <>
     <div className="irops-container">
     <div className="irops-info">
-      <h1 className="irops-title">Why flights are canceled</h1>
+      <h1 className="irops-title">Why Flights Are Canceled</h1>
 
       <div className="irops-info-card">
         <IropsData
