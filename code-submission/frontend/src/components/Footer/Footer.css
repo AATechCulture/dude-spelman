@@ -1,32 +1,33 @@
 /* Style your components */
-.footer{
+.footer {
     padding: 4rem 6rem;
     background: #000;
     color: #fff;
+    max-height: fit-content;
    
 }
 
-.top{
+.top {
     display: flex;
     align-items: center;
     text-align: start;
     justify-content: space-between;
     flex-wrap: wrap;
-   
+
 }
 
-.top i{
+.top i {
     color: #fff;
     font-size: 2rem;
     margin-left: 1rem;
 
 }
 
-.top i:hover{
+.top i:hover {
     color: #01959a;
 }
 
-.bottom{
+.bottom {
     padding-top: 2rem;
     text-align: start;
     display: flex;
@@ -35,7 +36,7 @@
 
 }
 
-.bottom div{
+.bottom div {
     display: flex;
     flex-direction: column;
 
@@ -50,21 +51,21 @@
     text-decoration: none;
     color: #fafafa;
     padding-bottom: 0.4rem;
-    font-size:1.1rem;
+    font-size: 1.1rem;
 
 }
 
-@media screen and (max-width: 850px){
-    .footer{
+@media screen and (max-width: 850px) {
+    .footer {
         padding: 4rem 2rem;
 
     }
 
-    .footer i{
+    .footer i {
         margin: 1rem 1rem 0 0;
     }
 
-    .bottom div{
+    .bottom div {
         width: 50%;
     }
 }
