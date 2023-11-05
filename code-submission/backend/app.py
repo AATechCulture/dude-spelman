@@ -8,7 +8,7 @@ import dateutil
 app = Flask(__name__)
 
 
-@app.route("predict-cancellation", methods=["GET"])
+@app.route("/predict-cancellation", methods=["GET"])
 def predict_cancellation():
     data = request.get_json()
     if not data:
