@@ -1,7 +1,6 @@
 # Dude Spelman AA Hack Submission
 
-# Project Name
-Weather Wise
+# Weather Wise
 
 ## Challenge Statement(s) Addressed 🎯
 - How might we inform customers of weather-related flight cancellations before they happen?
