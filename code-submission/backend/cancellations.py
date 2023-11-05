@@ -5,6 +5,7 @@ import weather_data
 import flight_engine
 from datetime import datetime, timedelta
 import dateutil
+import os
 
 
 airports = airportsdata.load("IATA")
@@ -27,8 +28,9 @@ def getFlightCancelNum(departDate: str, airportCode: str):
     Output:
         Integer of the Canceled Flights on a given date
     """
-    airlineData = pd.read_csv(
-        f"code-submission/backend/dataset/{airportCode}_2010_23.csv", sep=","
+    wk_dir = os.getcwd()
+    airlineData = pd.read_csv(wk_dir +
+        f"/dataset/{airportCode}_2010_23.csv", sep=","
     )
     
     return airlineData[airlineData["Date"] == dateCleanup(departDate)][
@@ -45,8 +47,9 @@ def getFlightCancelPer(departDate: str, airportCode: str):
     Output:
         Float of the % of Canceled Flights on a given date
     """
-    airlineData = pd.read_csv(
-        f"code-submission/backend/dataset/{airportCode}_2010_23.csv", sep=","
+    wk_dir = os.getcwd()
+    airlineData = pd.read_csv(wk_dir +
+        f"/dataset/{airportCode}_2010_23.csv", sep=","
     )
     return airlineData[airlineData["Date"] == dateCleanup(departDate)][
         "Canceled_Percentage"
@@ -60,8 +63,9 @@ def getDataTotData(departDate: str, airportCode: str):
         departDate - String in "Month/Date/Year" Format. Ex: "10/25/2023"
         airportCode - String in the IATA Format for airport identification. Ex: "JFK"
     """
-    airlineData = pd.read_csv(
-        f"code-submission/backend/dataset/{airportCode}_2010_23.csv", sep=","
+    wk_dir = os.getcwd()
+    airlineData = pd.read_csv(wk_dir +
+        f"/dataset/{airportCode}_2010_23.csv", sep=","
     )
     return airlineData[airlineData["Date"] == dateCleanup(departDate)]
 
