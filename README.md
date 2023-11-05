@@ -31,9 +31,11 @@ American Airlines Flight engine API
 
 ### ✨ Contributors ✨
 **...tell the world who you and your team are 🙂**
-* Team member X (AAdvantage No)
-* Team member Y (AAdvantage No)
-* Team member Z (AAdvantage No)
+* Kevin Drew (E24EE72)
+* Zayden Chin
+* Jovan Ford
+* Trent Gaylord
+* Elijah Truitt
 
 ### School Name 🏫
 Morehouse College
@@ -48,12 +50,12 @@ Dude Spelman
 **...point us to your PPT or Canva slides 😍**
 
 ### Team Checklist due before 5p Saturday 11/4 ✅
-- [ ] Team photo
-- [ ] Team Slack channel
-- [ ] Communication established with mentor
-- [ ] Repo creation from this template
-- [ ] Hangar registration
-- [ ] Scavenger Hunt submission
+- [✅] Team photo
+- [✅] Team Slack channel
+- [✅] Communication established with mentor
+- [✅] Repo creation from this template
+- [✅] Hangar registration
+- [✅] Scavenger Hunt submission
 
 ### Project Checklist due before 10a Sunday 11/5 🏁
 - [ ] Presentation complete and linked
