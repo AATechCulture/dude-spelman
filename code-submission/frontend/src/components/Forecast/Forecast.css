@@ -1,9 +1,23 @@
-.title{
+.forecast-container {
     margin-top: 150px;
+    margin-left: 60px;
+    margin-right: 60px;
+    justify-content: center;
+    background-color: #C7D0D7;
+    border: 5px solid black; /* Add black border */
+  }
+  
+.title{
+    margin-top: 5px;
+    justify-content: center;
+    display: flex;
+
 
 }
 .sub-title{
     margin-top: 75px;
+    justify-content: center;
+
 }
 .departure-code{
     
@@ -15,6 +29,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    
 
 }
 
@@ -24,6 +39,8 @@
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 16px;
+    justify-content: center;
+
 }
   
   /* Button styles */
@@ -35,8 +52,60 @@
     border-radius: 5px;
     font-size: 16px;
     cursor: pointer;
+    justify-content: center;
+    display: flex;
+
 }
   
 .button:hover {
     background-color: #0056b3;
+}
+
+.date-picker{
+    display: flex;
+    padding-left: 20px;
+    font-weight: 700;
+}
+input{
+    display: flex;
+    margin-left: 10px;
+
+}
+label{
+    font-size: 115%;
+}
+.submit-btn{
+    align-items: center;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+.submit{
+    align-items: center;
+    display: flex;
+    margin-bottom: 19px;
+}
+@media screen and (max-width:850px){
+    
+    .departure-code{
+        flex-direction: column;
+    }
+    .date-picker{
+        padding-top: 30px;
+    flex-direction: column;
+    }
+    .arrival-code{
+        flex-direction: column;
+    }
+
+    input{
+        margin-top: 0 10px;
+
+    }
+
+    .forecast-container{
+        padding-top: 30px;
+        padding-bottom: 30px;
+    }
+    
 }

@@ -2,6 +2,7 @@ import { Component } from "react";
 import "./Navbar.css";
 import { MenuItems } from "./MenuItems";
 import { Link } from "react-router-dom";
+import logo from "../../assets/ww1.png"
 
 class Navbar extends Component {
   // Set state
@@ -15,8 +16,9 @@ class Navbar extends Component {
   render() {
     return (
       <nav className="NavbarItems">
-        
+        <img src={logo} alt="logo"/><Link to="/">
         <h1 className="navbar-logo">Weather Wise</h1>
+        </Link>
 
         <div className="menu-icons" onClick={this.handleClick}>
           <i

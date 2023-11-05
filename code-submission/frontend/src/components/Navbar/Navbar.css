@@ -21,7 +21,11 @@
     background-color:#0D73B1;
     text-decoration: none;
 }
-
+.NavbarItems h1{
+    display: flex;
+    justify-content: space-between;
+    align-items: left;
+}
 .NavbarItems img{
     height: 100%;
     width: auto;
