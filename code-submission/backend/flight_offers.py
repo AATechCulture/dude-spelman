@@ -1,6 +1,7 @@
 from amadeus import ResponseError, Client
 
-#pip3 install amadeus
+# pip3 install amadeus
+# pip3 install flask
 
 amadeus = Client(
     client_id='0bI9rpxwYG37LhTmho985U14F1pBurIY',
@@ -30,13 +31,12 @@ def get_flight_offers(originLocationCode, destinationLocationCode, departureDate
             adults=adults).data
         
         response_one_flight = amadeus.shopping.flight_offers.pricing.post(flight_prices[0])
-    
-        print(flight_offers.data)
-        print(response_one_flight.data)
+
+        return (flight_offers, flight_prices)
 
     except ResponseError as error:
         print(f"Invalid requesst for flights from {originLocationCode} to {destinationLocationCode} on {departureDate} with {adults} adults.")
         print(error)
         raise error
     
-get_flight_offers('MAD', 'BOS', '2023-11-06', '1')
+# get_flight_offers('MAD', 'BOS', '2023-11-06', '1')
