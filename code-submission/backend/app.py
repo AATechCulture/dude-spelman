@@ -23,7 +23,7 @@ def predict_cancellation():
     return result
 
 
-@app.route("get-weather", methods=["GET"])
+@app.route("/get-weather", methods=["GET"])
 def get_weather():
     data = request.get_json()
     if not data:
