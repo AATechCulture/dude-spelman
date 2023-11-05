@@ -4,6 +4,7 @@ import "./Forecast.css";
 const Forecast = () => {
   const [departureCode, setDepartureCode] = useState("");
   const [arrivalCode, setArrivalCode] = useState("");
+  const [weatherData, setWeatherData] = useState(null);
 
   return (
     <div>
@@ -19,7 +20,7 @@ const Forecast = () => {
           placeholder="e.g. JFK"
         />
       </div>
-      {/* For forecast info based on airport departure city */}
+      {/* For forecast info based on airport departure city weatherData?*/}
       <br />
       <h2>Arrival Airport Forecast</h2>
 
@@ -34,7 +35,7 @@ const Forecast = () => {
           placeholder="e.g. LAX"
         />
       </div>
-      {/* For forecast info based on airport arrival city */}
+      {/* For forecast info based on airport arrival city weatherData?*/}
     </div>
   );
 };
