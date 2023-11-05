@@ -104,7 +104,7 @@ def get_cancellation_percentage(flight_number: str, flight_date: str) -> float:
         airport_origin["location"]["longitude"],
         airport_origin["location"]["latitude"],
         flight_date,
-        flight_date
+        flight_date,
     )
 
     print(historical_data)
@@ -115,8 +115,6 @@ def get_cancellation_percentage(flight_number: str, flight_date: str) -> float:
     # Assuming the DataFrame is populated.
     # model_response = model.predict(df)
     model_response = 0
-
-
 
     percentage = (
         temp * 0.1

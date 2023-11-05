@@ -1,5 +1,6 @@
 import requests
 
+
 def get_weather_data(longitude, latitude, departue_time):
     """
     Fetches weather data for a specific location and time.
@@ -16,10 +17,17 @@ def get_weather_data(longitude, latitude, departue_time):
     weather data for the specified time period. If no matching time period is found in the forecast data, None is returned.
     """
 
-    weather_data = requests.get(f"https://api.weather.gov/points/{longitude},{latitude}").json()
-    seven_day_hourly_forecast = requests.get(weather_data['properties']["forecastHourly"]).json()
+    weather_data = requests.get(
+        f"https://api.weather.gov/points/{longitude},{latitude}"
+    ).json()
+    seven_day_hourly_forecast = requests.get(
+        weather_data["properties"]["forecastHourly"]
+    ).json()
 
-    for period in seven_day_hourly_forecast['properties']['periods']:
-        if departue_time >= period['startTime'] and departue_time <= period['endTime']:
-            return period 
+    for period in seven_day_hourly_forecast["properties"]["periods"]:
+        if (
+            departue_time >= period["startTime"]
+            and departue_time <= period["endTime"]
+        ):
+            return period
     return None
