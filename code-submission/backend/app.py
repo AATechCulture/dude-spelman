@@ -61,5 +61,23 @@ def get_flight_info():
     )
 
 
+@app.route("/bonito-flakes", methods=["GET"])
+def get_airport_from_flight():
+    if not request.args:
+        return Response(status=400)
+
+    flight_number = request.args["flight_number"]
+    flight_date = request.args["flight_date"]
+
+    flight_info = flight_engine.find_flight_info(flight_number, flight_date)
+
+    res = {
+        "origin_airport": flight_info["origin"]["code"],
+        "destination_airport": flight_info["destination"]["code"],
+    }
+
+    return res
+
+
 if __name__ == "__main__":
     app.run(port=8000, debug=True)

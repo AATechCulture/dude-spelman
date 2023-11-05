@@ -15,6 +15,17 @@ const CancelRating = () => {
   //       console.log(percentage);
   //     });
   // });
+  useEffect(() => {
+    fetch("/predict-cancellation?" + new URLSearchParams({
+      flight_number: 7373,
+      flight_date: "2023-11-05"
+    }))
+      .then((res) => res.json())
+      .then((data) => {
+        setPercentage(data);
+        console.log(percentage);
+      });
+  });
 
   return (
     <div className="rating-container">
