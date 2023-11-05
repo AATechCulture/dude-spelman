@@ -27,21 +27,16 @@ const CancelRating = ({
   };
 
   return (
-<<<<<<< HEAD
     <div className="rating-container">
-      <h2 className="rating-header">The chance of your flight being cancelled is:</h2>
+      <h2 className="rating-header">
+        The chance of your flight being cancelled is:
+      </h2>
       <h1 className="rating">16%</h1>
-      <p className="rating-explanation">The rating is the result of our flight cancellation algorithm which is influenced by airport weather conditons.</p>
-      </div>
-=======
-    <div>
-      <button onClick={handleCalculatePercentage}>
-        Calculate Cancellation Percentage
-      </button>
-      <h4>Cancellation Percentage:</h4>
-      <p>{percentage}%</p>
+      <p className="rating-explanation">
+        The rating is the result of our flight cancellation algorithm which is
+        influenced by airport weather conditons.
+      </p>
     </div>
->>>>>>> 546710d (moving variables)
   );
 };
 
