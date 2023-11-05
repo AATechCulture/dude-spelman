@@ -15,7 +15,7 @@ def get_airport_info(airport_IATA: str) -> Dict:
 
     Input:
       airport_IATA (str): A three letter airport code (ATL, DFW, SFO).
-    
+
     Returns:
       A JSON object with information about the requested airport.
     """
@@ -38,7 +38,7 @@ def get_flights_on_date(date: str) -> Dict:
 
     Input:
       date (str): A date with format YYYY-MM-DD.
-    
+
     Returns:
       A dictionary of all AA flights that depart on the given date. We use a
       dictionary here to keep all future queries O(1), weighing the initial
@@ -69,14 +69,14 @@ def find_flight_info(flight_number: str, flight_date: str) -> Dict:
     Input:
       flight_number (str): A string representation of a flight number.
       flight_date (str): A string representation of a date (YYYY-MM-DD).
-    
+
     Returns:
       A JSON object containing info on the requested flight.
     """
 
     flight_db = get_flights_on_date(flight_date)
     if flight_number not in flight_db:
-        return None  # TODO(elijahtruitt): Maybe handle this better?
+        return None
 
     flight_info = flight_db[flight_number]
     return flight_info

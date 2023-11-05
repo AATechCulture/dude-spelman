@@ -1,6 +1,6 @@
 # Dude Spelman AA Hack Submission
 
-# Weather Wise
+# WeatherWise
 
 ## Challenge Statement(s) Addressed 🎯
 - How might we inform customers of weather-related flight cancellations before they happen?
@@ -14,28 +14,28 @@ The primary target audience for Weather Wise includes frequent flyers, travel pl
 
 
 ## Tech Overview 💻
-**... what tech was used to bring this project to life?**
+Frontend: React JS
+Backend: Flask
 
-React
-Flask
-
-National Weather Service (NWS) API
-Historical Weather API
-Amadeus flight information
-Uber API
-American Airlines Flight engine API
-
-
-
-
+* National Weather Service (NWS) API
+* Historical Weather API
+* Amadeus flight information API
+* Uber API
+* American Airlines Flight engine API
+* Tensorflow Keras API
+* Google Colab to train Neural Network
+* DrawIO for system designs
+* FAA ASPQ Database
+* Pandas & Numpy to transform data
+<img src="./code-submission/neural_network/neural_network.drawio.png" alt="drawing" width="500"/>
 
 ### ✨ Contributors ✨
 **...tell the world who you and your team are 🙂**
 * Kevin Drew (E24EE72)
 * Zayden Chin (R5EY082)
-* Jovan Ford
+* Jovan Ford (K7MK198)
 * Trent Gaylord (4RK53A0)
-* Elijah Truitt
+* Elijah Truitt (M57XH78)
 
 ### School Name 🏫
 Morehouse College
@@ -58,9 +58,9 @@ https://www.canva.com/design/DAFzRWlkwj8/HRtOxuFxmS8RG2gt8pBPrg/edit?utm_content
 - [✅] Scavenger Hunt submission
 
 ### Project Checklist due before 10a Sunday 11/5 🏁
-- [ ] Presentation complete and linked
+- [✅] Presentation complete and linked
 - [ ] Video pitch recorded and linked
-- [ ] Code merged to main branch
+- [✅] Code merged to main branch
 
 ### Sample Checklist for Syntax Example 
 - [ ] Presentation complete and linked

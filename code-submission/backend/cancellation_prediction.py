@@ -102,7 +102,8 @@ def get_cancellation_percentage(flight_number: str, flight_date: str) -> float:
     # Load historical weather data
     historical_data = historical_weather_data.get_historical_weather_data_v1(
         airport_origin["location"]["latitude"],
-        airport_origin["location"]["longitude"]
+        flight_date,
+        flight_date
     )
 
     df = historical_weather_data.create_data_frame(historical_data, home_code)

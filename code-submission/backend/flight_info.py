@@ -1,13 +1,16 @@
 from amadeus import ResponseError, Client
 
 amadeus = Client(
-    client_id='0bI9rpxwYG37LhTmho985U14F1pBurIY',
-    client_secret='QehM7zTGhLAwL6Ud'
+    client_id="0bI9rpxwYG37LhTmho985U14F1pBurIY",
+    client_secret="QehM7zTGhLAwL6Ud",
 )
 
-def get_flight_info(originLocationCode, destinationLocationCode, departureDate, adults):
+
+def get_flight_info(
+    originLocationCode, destinationLocationCode, departureDate, adults
+):
     """
-    Retrieves flight offers and pricing information for flights from a specified origin to a destination on a given date for a certain number of adults. 
+    Retrieves flight offers and pricing information for flights from a specified origin to a destination on a given date for a certain number of adults.
 
     Parameters:
     - originLocationCode (str): The IATA code for the origin airport.
@@ -29,20 +32,25 @@ def get_flight_info(originLocationCode, destinationLocationCode, departureDate, 
             originLocationCode=originLocationCode,
             destinationLocationCode=destinationLocationCode,
             departureDate=departureDate,
-            adults=adults
+            adults=adults,
         )
-        
+
         flight_prices = amadeus.shopping.flight_offers_search.get(
-            originLocationCode=originLocationCode, 
+            originLocationCode=originLocationCode,
             destinationLocationCode=destinationLocationCode,
-            departureDate=departureDate, 
-            adults=adults).data
-        
-        response_one_flight = amadeus.shopping.flight_offers.pricing.post(flight_prices[0])
+            departureDate=departureDate,
+            adults=adults,
+        ).data
+
+        response_one_flight = amadeus.shopping.flight_offers.pricing.post(
+            flight_prices[0]
+        )
 
         return [flight_offers, flight_prices]
 
     except ResponseError as error:
-        print(f"Invalid requesst for flights from {originLocationCode} to {destinationLocationCode} on {departureDate} with {adults} adults.")
+        print(
+            f"Invalid requesst for flights from {originLocationCode} to {destinationLocationCode} on {departureDate} with {adults} adults."
+        )
         print(error)
         raise error
