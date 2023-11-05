@@ -133,6 +133,6 @@ def parseWeatherData():
     """
 
 
-parseWeatherData()
+#parseWeatherData()
 # print(getDataTotData(dateCleanup("1/02/2020"),"ATL"))
 # print(getDataTotData("1/9/10", "ATL"))

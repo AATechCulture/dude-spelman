@@ -1,4 +1,4 @@
-﻿Airport,Date,Total_Flights,Unaffected_Flights,Unaffected_Percentage,Canceled_Flights,Canceled_Percentage,temp,precipitation_prob,humidity,wind_speed,forecast
+﻿airport,date,Total_Flights,Unaffected_Flights,Unaffected_Percentage,Canceled_Flights,Canceled_Percentage
 ATL,1/1/10,833,828,99.4,5,0.6
 ATL,1/2/10,1006,997,99.11,9,0.89
 ATL,1/3/10,1107,1100,99.37,7,0.63
