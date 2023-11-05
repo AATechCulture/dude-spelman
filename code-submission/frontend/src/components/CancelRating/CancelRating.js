@@ -18,6 +18,7 @@ const CancelRating = () => {
       .then((res) => res.json())
       .then((data) => {
         setPercentage(data);
+        console.log("percent", data);
       });
   });
 
