@@ -3,6 +3,8 @@ import Forecast from "../components/Forecast/Forecast";
 import CancelRating from "../components/CancelRating/CancelRating";
 import IROPS from "../components/IROPS/irops";
 import Navbar from "../components/Navbar/Navbar";
+import Footer from "../components/Footer/Footer";
+
 
 const PreCancellation = () => {
   const [flightNumber, setFlightNumber] = useState("");
@@ -23,6 +25,7 @@ const PreCancellation = () => {
         setFlightDate={setFlightDate}
       />
       <IROPS />
+      <Footer />
     </div>
   );
 };
