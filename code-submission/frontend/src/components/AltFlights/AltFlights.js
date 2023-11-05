@@ -25,7 +25,7 @@ const AltFlights = () => {
 
 
   return (
-    <div get-info>
+    <div className="get-info">
       <h1>Flight Information</h1>
       {flightData ? (
         <div>

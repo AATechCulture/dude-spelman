@@ -1,10 +1,11 @@
-import React, { useStt } from "react";
+import React from "react";
 import "./Hotel.css";
 import Hyatt from "../../assets/Hyatt_Logo.jpeg";
 import IHG from "../../assets/IHG_Logo.png";
 import Marriot from "../../assets/Marriot_Logo.png";
 import { Link } from "react-router-dom";
-function Hotel() {
+
+const Hotel = () => {
   return (
     <div className="hotel-info">
       <h1>Book your Hotels Here</h1>
@@ -31,6 +32,6 @@ function Hotel() {
       </div>
     </div>
   );
-}
+};
 
 export default Hotel;
