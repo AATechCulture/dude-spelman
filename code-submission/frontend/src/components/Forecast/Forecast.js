@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import flights from "../../assets/flights.png"
 import "./Forecast.css";
 
 const Forecast = () => {
@@ -40,6 +41,7 @@ const Forecast = () => {
   return (
     <div className="forecast-container">
       <h1 className="title">Pre-Cancellation Metrics</h1>
+      <div className="flight-code">
       <h3>Flight Code:</h3>
       <input
         type="text"
@@ -51,6 +53,11 @@ const Forecast = () => {
         <label htmlFor="dateInput">Select a Date:</label>
         <input type="date" id="dateInput" value={selectedDepartureDate} />
       </div>
+      <div className="submit">
+          {" "}
+          <input className="submit-btn" type="submit" value="Submit"></input>
+        </div>
+      </div>
       <h2 className="sub-title">Departure Airport Forecast</h2>
       <div className="departure-code"></div>
       {/* For forecast info based on airport departure city weatherData?*/}
@@ -59,10 +66,6 @@ const Forecast = () => {
 
       <div className="arrival-code">
         <br />
-        <div className="submit">
-          {" "}
-          <input className="submit-btn" type="submit" value="Submit"></input>
-        </div>
       </div>
       {/* For forecast info based on airport arrival city weatherData?*/}
     </div>

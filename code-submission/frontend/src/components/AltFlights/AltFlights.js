@@ -1,6 +1,9 @@
 import "./AltFlights.css";
 import React, { useState, useEffect } from "react";
 import axios from "axios"
+import flights from "../../assets/flights.png"
+import { Link } from "react-router-dom";
+
 const AltFlights = () => {
 
   const [flightData, setFlightData] = useState(null);
@@ -27,6 +30,7 @@ const AltFlights = () => {
   return (
     <div className="alt-flights-container">
       <h1>Flight Information</h1>
+=
       {flightData ? (
         <div>
           <h2>Flight Offers</h2>
@@ -43,7 +47,8 @@ const AltFlights = () => {
           </ul>
         </div>
       ) : (
-        <p>Loading flight information...</p>
+        <Link to="https://www.aa.com/homePage.do" target="_blank"><img className="flight-image" src={flights} alt="logo"/></Link>
+
       )}
     </div>
     
