@@ -1,9 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./CancelRating.css";
+import axios from "axios";
 
 const CancelRating = () => {
-  const [departureCode, setDepartureCode] = useState("");
-  const [arrivalCode, setArrivalCode] = useState("");
+  const [flightNumber, setFlightNumber] = useState("");
+  const [flightDate, setFlightDate] = useState("");
+  const [percentage, setPercentage] = useState(null);
+
+  // useEffect(() => {
+  //   fetch("/predict-cancellation")
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       setPercentage(percentage);
+  //       console.log(percentage);
+  //     });
+  // });
 
   return (
     <div className="rating-container">

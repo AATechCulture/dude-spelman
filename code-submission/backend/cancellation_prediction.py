@@ -72,11 +72,37 @@ def get_cancellation_percentage(flight_number: str, flight_date: str) -> float:
         arrival_date, away_code
     )
 
-    # print(history_percentage_origin)
-    # print(history_percentage_dest)
+    print(origin_weather)
+    print(dest_weather)
+    print(history_percentage_origin)
+    print(history_percentage_dest)
+
+    """
+    Temperature ^2 * (0.15) + precipProb * (0.05) + humidity * (0.05) + windSpeed * (0.20) + shortForecast_weight * (0.25)
+    """
+    temp = origin_weather["temperature"]
+    precipitation_prob = origin_weather["probabilityOfPrecipitation"]["value"]
+    humidity = origin_weather["relativeHumidity"]["value"]
+    wind_speed = int(origin_weather["windSpeed"][0])
+    forecast = origin_weather["shortForecast"]
+
+    """
+    W_PoP * PoP + W_WS * WindSpeedScore + W_Temperature * TemperatureScore + W_RH * RelativeHumidity + W_Other * OtherConditionsScore) / (W_PoP + W_WS + W_Temperature + W_RH + W_Other
+    """
+
+    percentage = (
+        temp * 0.1
+        + precipitation_prob * 0.4
+        + humidity * 0.1
+        + wind_speed * 3
+        + history_percentage_origin / 100
+    ) / (0.1 + 0.4 + 0.1 + 0.3)
+    return percentage
 
 
-# get_cancellation_percentage(
-#     "1048",
-#     "2023-11-05",
+# print(
+#     get_cancellation_percentage(
+#         "7373",
+#         "2023-11-05",
+#     )
 # )
