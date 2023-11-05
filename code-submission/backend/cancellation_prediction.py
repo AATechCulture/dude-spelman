@@ -2,7 +2,7 @@ import flight_engine
 import weather_data
 import cancellations
 import dateutil
-import datetime
+from datetime import datetime
 import tensorflow as tf
 import historical_weather_data
 from sklearn.preprocessing import LabelEncoder
@@ -100,22 +100,29 @@ def get_cancellation_percentage(flight_number: str, flight_date: str) -> float:
     model = load_savedmodel("./model.h5")
 
     # Load historical weather data
-    historical_data = historical_weather_data.get_historical_weather_data(
-        airport_origin["location"]["longitude"],
+    historical_data = historical_weather_data.get_historical_weather_data_v1(
         airport_origin["location"]["latitude"],
-        flight_date,
-        flight_date
+        airport_origin["location"]["longitude"]
     )
 
-    print(historical_data)
-    # label_encoder = LabelEncoder()
-    # TODO(Zayden): Pull the weather data into this dataframe.
-    df = pd.DataFrame()
+    df = historical_weather_data.create_data_frame(historical_data, home_code)
 
     # Assuming the DataFrame is populated.
-    # model_response = model.predict(df)
-    model_response = 0
 
+    flight_date = datetime.strptime(flight_date, '%Y-%m-%d')
+    formatted_date = cancellations.dateCleanup(str(flight_date.strftime('%m/%d/%Y')))
+    response = df[df['date'] == formatted_date]
+
+    model_response = model.predict (
+        pd.DataFrame({
+    "airport_encoded": [2],
+    "month_encoded": [12],
+    "Canceled_Flights": [31],
+    "weather_code": [75],
+    "temperature_2m_max": [4.1495],
+    "precipitation_sum": [37.9],
+    "rain_sum": [1.5],
+    "wind_speed_10m_max": [42.150757] }) )
 
 
     percentage = (

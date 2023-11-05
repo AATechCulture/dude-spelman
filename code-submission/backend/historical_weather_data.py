@@ -11,15 +11,13 @@ openmeteo = openmeteo_requests.Client(session = retry_session)
 
 airpot_long_lat_dict = cancellations.generateAirportLongLatDict()
 
-def get_historical_weather_data(latitude, longitude, start_date, end_date):
+def get_historical_weather_data_v1(latitude, longitude):
     """
-    Fetches historical weather data for a given geographical location and date range using the Open-Meteo API.
+    Fetches future weather data for a given geographical location using the Open-Meteo API.
 
     Parameters:
         latitude (float): The latitude of the location.
         longitude (float): The longitude of the location.
-        start_date (str): The start date for the data retrieval in 'YYYY-MM-DD' format.
-        end_date (str): The end date for the data retrieval in 'YYYY-MM-DD' format.
 
     Returns:
         list: A list of response objects containing weather data.
@@ -28,19 +26,72 @@ def get_historical_weather_data(latitude, longitude, start_date, end_date):
         OpenMeteoRequestsError: If the API request fails or returns an error.
     """
 
-    url = "https://archive-api.open-meteo.com/v1/archive"
+    url = "https://api.open-meteo.com/v1/forecast"
 
     params = {
         "latitude": latitude,
         "longitude": longitude,
-        "start_date": start_date,
-        "end_date": end_date,
-        "daily": ["weather_code", "temperature_2m_max", "precipitation_sum", "rain_sum", "snowfall_sum", "wind_speed_10m_max"]
+        "daily": ["weather_code", "temperature_2m_max", "precipitation_sum", "rain_sum", "snowfall_sum", "wind_speed_10m_max"],
+        "timezone": "auto"
     }
 
     responses = openmeteo.weather_api(url, params=params)
     
     return responses
+
+
+def create_data_frame(response, airportcode):
+    """
+    Constructs a pandas DataFrame from weather response data for a specific airport.
+
+    Parameters:
+    - response (Response Object): The response object from the weather data API call.
+    - airportcode (str): The IATA code for the airport to which the weather data pertains.
+
+    Returns:
+    - DataFrame: A pandas DataFrame containing the structured weather data with the following columns:
+        - date: The date for each entry, formatted as "mm/dd/yyyy".
+        - weather_code: The weather condition code for the day.
+        - airport: The IATA code for the airport, repeated for each entry.
+        - temperature_2m_max: The maximum temperature at 2 meters above ground level.
+        - precipitation_sum: The total precipitation for the day.
+        - rain_sum: The total amount of rain for the day.
+        - snowfall_sum: The total snowfall for the day.
+        - wind_speed_10m_max: The maximum wind speed at 10 meters above ground level.
+    """
+    daily = response[0].Daily()
+
+    daily_weather_code = daily.Variables(0).ValuesAsNumpy()
+    daily_temperature_2m_max = daily.Variables(1).ValuesAsNumpy()
+    daily_precipitation_sum = daily.Variables(2).ValuesAsNumpy()
+    daily_rain_sum = daily.Variables(3).ValuesAsNumpy()
+    daily_snowfall_sum = daily.Variables(4).ValuesAsNumpy()
+    daily_wind_speed_10m_max = daily.Variables(5).ValuesAsNumpy()
+
+    daily_data = {"date": pd.date_range(
+        start = pd.to_datetime(daily.Time(), unit = "s"),
+        end = pd.to_datetime(daily.TimeEnd(), unit = "s"),
+        freq = pd.Timedelta(seconds = daily.Interval()),
+        inclusive = "left"
+    )}
+
+    daily_data["weather_code"] = daily_weather_code
+    daily_data["airport"] = [airportcode]*len(daily_data["weather_code"])
+    daily_data["temperature_2m_max"] = daily_temperature_2m_max
+    daily_data["precipitation_sum"] = daily_precipitation_sum
+    daily_data["rain_sum"] = daily_rain_sum
+    daily_data["snowfall_sum"] = daily_snowfall_sum
+    daily_data["wind_speed_10m_max"] = daily_wind_speed_10m_max
+
+    dates = []
+    for date in daily_data["date"]:
+        formatted_date = date.strftime("%m/%d/%Y")
+        dates.append(cancellations.dateCleanup(formatted_date))
+
+    daily_data["date"] = daily_data["date"].astype(str)
+    daily_data["date"] = dates
+
+    return pd.DataFrame(data = daily_data)
 
 
 def create_csv_from_data_frame(responses, airport_codes):
@@ -56,43 +107,9 @@ def create_csv_from_data_frame(responses, airport_codes):
         The file is saved to the current working directory.
     """
 
-
     master_data_frame = pd.DataFrame()
     for i, response in enumerate(responses):
-        daily = response[0].Daily()
-
-        daily_weather_code = daily.Variables(0).ValuesAsNumpy()
-        daily_temperature_2m_max = daily.Variables(1).ValuesAsNumpy()
-        daily_precipitation_sum = daily.Variables(2).ValuesAsNumpy()
-        daily_rain_sum = daily.Variables(3).ValuesAsNumpy()
-        daily_snowfall_sum = daily.Variables(4).ValuesAsNumpy()
-        daily_wind_speed_10m_max = daily.Variables(5).ValuesAsNumpy()
-
-        daily_data = {"date": pd.date_range(
-            start = pd.to_datetime(daily.Time(), unit = "s"),
-            end = pd.to_datetime(daily.TimeEnd(), unit = "s"),
-            freq = pd.Timedelta(seconds = daily.Interval()),
-            inclusive = "left"
-        )}
-
-        daily_data["weather_code"] = daily_weather_code
-        daily_data["airport"] = [airport_codes[i]]*len(daily_data["weather_code"])
-        daily_data["temperature_2m_max"] = daily_temperature_2m_max
-        daily_data["precipitation_sum"] = daily_precipitation_sum
-        daily_data["rain_sum"] = daily_rain_sum
-        daily_data["snowfall_sum"] = daily_snowfall_sum
-        daily_data["wind_speed_10m_max"] = daily_wind_speed_10m_max
-
-
-        dates = []
-        for date in daily_data["date"]:
-            formatted_date = date.strftime("%m/%d/%Y")
-            dates.append(cancellations.dateCleanup(formatted_date))
-            
-        daily_data["date"] = daily_data["date"].astype(str)
-        daily_data["date"] = dates
-
-        daily_dataframe = pd.DataFrame(data = daily_data)
+        daily_dataframe = create_data_frame(response, airport_codes[i])
         master_data_frame = pd.concat([master_data_frame, daily_dataframe], ignore_index=True)
 
     flight_data = pd.read_csv("backend/dataset/Top25-Flight-Weather-Interrupt.csv", sep=",")

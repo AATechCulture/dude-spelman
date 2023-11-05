@@ -94,6 +94,7 @@ def dateCleanup(incomingDate: str):
     Output:
         Corrected version of date. Ex: "1/5/23"
     """
+    print(incomingDate)
     dateSplit = incomingDate.split("/")
     if dateSplit[0][0] == "0":
         dateSplit[0] = dateSplit[0][1:]
