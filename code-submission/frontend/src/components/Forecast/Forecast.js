@@ -1,7 +1,12 @@
 import React, { useState } from "react";
 import "./Forecast.css";
 
-const Forecast = () => {
+const Forecast = ({
+  flightNumber,
+  setFlightNumber,
+  flightDate,
+  setFlightDate,
+}) => {
   const [departureCode, setDepartureCode] = useState("");
   const [arrivalCode, setArrivalCode] = useState("");
   const [weatherData, setWeatherData] = useState(null);

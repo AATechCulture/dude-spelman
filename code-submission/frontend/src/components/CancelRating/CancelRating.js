@@ -11,21 +11,27 @@ const CancelRating = ({
   const [percentage, setPercentage] = useState(null);
 
   const handleCalculatePercentage = () => {
-    axios
-      .get(`http://localhost:5000/predict-cancellation`, {
-        params: {
-          flight_number: flightNumber,
-          flight_date: flightDate,
-        },
-      })
-      .then((response) => {
-        setPercentage(response.data);
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-      });
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+    var raw = JSON.stringify({
+      flight_number: 1234,
+      flight_date: "2023-11-05",
+    });
+
+    var requestOptions = {
+      method: "GET",
+      headers: myHeaders,
+      body: raw,
+      redirect: "follow",
+    };
+
+    fetch("http://localhost:8000/predict-cancellation", requestOptions)
+      .then((response) => response.text())
+      .then((result) => console.log(result))
+      .catch((error) => console.log("error", error));
   };
 
+  console.log("percentage", percentage);
   return (
     <div className="rating-container">
       <h2 className="rating-header">

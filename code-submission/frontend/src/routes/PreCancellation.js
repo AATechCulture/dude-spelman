@@ -10,7 +10,12 @@ const PreCancellation = () => {
   return (
     <div>
       <Navbar />
-      <Forecast />
+      <Forecast
+        flightNumber={flightNumber}
+        setFlightNumber={setFlightNumber}
+        flightDate={flightDate}
+        setFlightDate={setFlightDate}
+      />
       <CancelRating
         flightNumber={flightNumber}
         setFlightNumber={setFlightNumber}
