@@ -3,6 +3,14 @@ import weather_data
 import cancellations
 import dateutil
 import datetime
+import tensorflow as tf
+
+
+def load_savedmodel(path: str):
+    model = tf.keras.models()
+    model.load(path)
+
+    return model
 
 
 def get_cancellation_percentage(flight_number: str, flight_date: str) -> float:
