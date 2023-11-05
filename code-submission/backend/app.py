@@ -1,4 +1,4 @@
-from flask import Flask, request, Response, jsonfiy
+from flask import Flask, request, Response, jsonify
 import cancellation_prediction
 import flight_info
 
