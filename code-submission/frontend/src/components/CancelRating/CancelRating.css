@@ -4,3 +4,18 @@
 .rating-explanation{
     font-size: 150%;
 }
+@media screen and (max-width:850px){
+    
+    .rating{
+        font-size: 250%;
+        padding: 0 15px;
+    }
+    .rating-explanation{
+        font-size: 150%;
+        padding: 0 25px;
+    }
+    .rating-header{
+        padding: 0 25px;
+    }
+    
+}

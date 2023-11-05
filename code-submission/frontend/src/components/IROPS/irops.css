@@ -8,6 +8,10 @@
     background-color: #C7D0D7;
     margin: 60px;
     padding-top: 1px;
+    margin-left: 60px;
+    margin-right: 60px;
+    background-color: #C7D0D7;
+    border: 5px solid black; /* Add black border */
 
 
 }
