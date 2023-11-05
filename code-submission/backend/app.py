@@ -1,6 +1,9 @@
 from flask import Flask, request, Response, jsonify
 import cancellation_prediction
 import flight_info
+import weather_data
+import flight_engine
+import dateutil
 
 app = Flask(__name__)
 
@@ -20,16 +23,43 @@ def predict_cancellation():
     return result
 
 
-@app.route("/flight_info", methods=['POST'])
+@app.route("get-weather", methods=["GET"])
+def get_weather():
+    data = request.get_json()
+    if not data:
+        return Response(status=400)
+
+    flight_number = data["flight_number"]
+    flight_date = data["flight_date"]
+
+    flight_info = flight_engine.find_flight_info(flight_number, flight_date)
+    airport_info = flight_engine.get_airport_info(flight_info["origin"]["code"])
+
+    long, lat = (
+        airport_info["location"]["longitude"],
+        airport_info["location"]["latitude"],
+    )
+    result = weather_data.get_weather_data(
+        long, lat, flight_info["departureTime"]
+    )
+
+    return result  # JSON
+
+
+@app.route("/flight_info", methods=["POST"])
 def get_flight_info():
-    
     data = request.json
-    originLocationCode = data.get('param1')
-    destinationLocationCode = data.get('param2')
-    departureDate = data.get('param3')
-    adults = data.get('param4')
-    
-    return jsonify(flight_info.get_flight_info(originLocationCode, destinationLocationCode, departureDate, adults))
+    originLocationCode = data.get("param1")
+    destinationLocationCode = data.get("param2")
+    departureDate = data.get("param3")
+    adults = data.get("param4")
+
+    return jsonify(
+        flight_info.get_flight_info(
+            originLocationCode, destinationLocationCode, departureDate, adults
+        )
+    )
+
 
 if __name__ == "__main__":
     app.run(debug=True)
