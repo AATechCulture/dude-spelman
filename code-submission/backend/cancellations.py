@@ -2,11 +2,7 @@ import airportsdata
 import pandas as pd
 import weather_data
 from datetime import datetime, timedelta
-<<<<<<< Updated upstream
-import dateutil
 import os
-=======
->>>>>>> Stashed changes
 
 
 airports = airportsdata.load("IATA")
@@ -112,7 +108,6 @@ def getWeatherBetweenDates(start_date:datetime, end_date:datetime,lat:str,long:s
         wind_speed = int(origin_weather["windSpeed"][0])
         forecast = origin_weather["shortForecast"]
 
-        #print(temp)
         current_date+=timedelta(days=1)
 
 def parseWeatherData():
@@ -120,7 +115,6 @@ def parseWeatherData():
     (TODO: IGNORE, OUT OF DATE VERSION OF INITIAL HISTORICAL_WEATHER_DATA.PY IMPLEMENTATION)
     """
     airportDict = generateAirportLongLatDict()
-    print(airportDict)
     for airCode in airportDict.keys():
         getWeatherBetweenDates(
             datetime(2020,10,1)+timedelta(hours=12),
