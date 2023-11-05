@@ -44,7 +44,7 @@ Morehouse College
 Dude Spelman
 
 ### Link to Video Pitch 📹
-**...point us to where you tell us about your solution 😄**
+[**Our Presentation**](https://youtu.be/HiwMNGmkCwM)
 
 ### Link to Demo Presentation 📽
 https://www.canva.com/design/DAFzRWlkwj8/HRtOxuFxmS8RG2gt8pBPrg/edit?utm_content=DAFzRWlkwj8&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
@@ -59,11 +59,11 @@ https://www.canva.com/design/DAFzRWlkwj8/HRtOxuFxmS8RG2gt8pBPrg/edit?utm_content
 
 ### Project Checklist due before 10a Sunday 11/5 🏁
 - [✅] Presentation complete and linked
-- [ ] Video pitch recorded and linked
+- [✅] Video pitch recorded and linked
 - [✅] Code merged to main branch
 
 ### Sample Checklist for Syntax Example 
-- [ ] Presentation complete and linked
-- [ ] Video pitch recorded and linked
-- [ ] Code merged to main branch
+- [✅] Presentation complete and linked
+- [✅] Video pitch recorded and linked
+- [✅] Code merged to main branch
 
