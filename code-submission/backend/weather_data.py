@@ -20,6 +20,8 @@ def get_weather_data(longitude, latitude, departue_time):
     weather_data = requests.get(
         f"https://api.weather.gov/points/{longitude},{latitude}"
     ).json()
+    if "properties" not in weather_data:
+        return None
     seven_day_hourly_forecast = requests.get(
         weather_data["properties"]["forecastHourly"]
     ).json()
