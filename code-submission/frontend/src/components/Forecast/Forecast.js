@@ -21,6 +21,8 @@ const Forecast = ({
     setSelectedArrivalDate(e.target.value);
   };
 
+  const handleSubmit = () => {};
+
   return (
     <div className="forecast-container">
       <h1 className="title">Pre-Cancellation Metrics</h1>
@@ -66,11 +68,11 @@ const Forecast = ({
             value={selectedArrivalDate}
             onChange={handleArrivalDateChange}
           />
-          </div>
-          <br/>
-          <div className="submit"> <input className="submit-btn" type="submit" value="Submit"></input>
-          </div>
-          
+        </div>
+        <br />
+        <div className="submit">
+          <input className="submit-btn" type="submit" value="Submit"></input>
+        </div>
       </div>
       {/* For forecast info based on airport arrival city weatherData?*/}
     </div>
