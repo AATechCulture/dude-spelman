@@ -102,20 +102,20 @@ def create_csv_from_data_frame(responses, airport_codes):
     merged_data = pd.merge(flight_data,master_data_frame, on=["date","airport"], how='outer')
     merged_data.to_csv('big_data.csv', index=False)
 
-responses = []
-keys = []
-for key in airpot_long_lat_dict.keys():
-    responses.append(get_historical_weather_data(airpot_long_lat_dict[key][0], airpot_long_lat_dict[key][1], "2018-01-01", "2020-01-01"))
-    keys.append(key)
+# responses = []
+# keys = []
+# for key in airpot_long_lat_dict.keys():
+#     responses.append(get_historical_weather_data(airpot_long_lat_dict[key][0], airpot_long_lat_dict[key][1], "2018-01-01", "2020-01-01"))
+#     keys.append(key)
 
-create_csv_from_data_frame(responses, keys)
+# create_csv_from_data_frame(responses, keys)
 
-# trim the data set between to only include the years of 2018 and 2019
-df = pd.read_csv('backend/dataset/big_data.csv')
-df['date'] = pd.to_datetime(df['date'], format='%m/%d/%y')
+# # trim the data set between to only include the years of 2018 and 2019
+# df = pd.read_csv('backend/dataset/big_data.csv')
+# df['date'] = pd.to_datetime(df['date'], format='%m/%d/%y')
 
-start_date = pd.to_datetime('1/1/18')
-end_date = pd.to_datetime('12/31/19')
+# start_date = pd.to_datetime('1/1/18')
+# end_date = pd.to_datetime('12/31/19')
 
-df_filtered = df[(pd.to_datetime(df['date']) >= start_date) & (pd.to_datetime(df['date']) <= end_date)]
-df_filtered.to_csv('big_data.csv', index=False)
+# df_filtered = df[(pd.to_datetime(df['date']) >= start_date) & (pd.to_datetime(df['date']) <= end_date)]
+# df_filtered.to_csv('big_data.csv', index=False)

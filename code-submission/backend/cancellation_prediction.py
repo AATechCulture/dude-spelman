@@ -4,6 +4,9 @@ import cancellations
 import dateutil
 import datetime
 import tensorflow as tf
+import historical_weather_data
+from sklearn.preprocessing import LabelEncoder
+import pandas as pd
 
 
 def load_savedmodel(path: str):
@@ -92,9 +95,28 @@ def get_cancellation_percentage(flight_number: str, flight_date: str) -> float:
     """
     W_PoP * PoP + W_WS * WindSpeedScore + W_Temperature * TemperatureScore + W_RH * RelativeHumidity + W_Other * OtherConditionsScore) / (W_PoP + W_WS + W_Temperature + W_RH + W_Other
     """
-    
+
+    # Load ML model
     model = load_savedmodel("./model.h5")
-    # print(model)
+
+    # Load historical weather data
+    historical_data = historical_weather_data.get_historical_weather_data(
+        airport_origin["location"]["longitude"],
+        airport_origin["location"]["latitude"],
+        flight_date,
+        flight_date
+    )
+
+    print(historical_data)
+    # label_encoder = LabelEncoder()
+    # TODO(Zayden): Pull the weather data into this dataframe.
+    df = pd.DataFrame()
+
+    # Assuming the DataFrame is populated.
+    # model_response = model.predict(df)
+    model_response = 0
+
+
 
     percentage = (
         temp * 0.1
@@ -103,6 +125,8 @@ def get_cancellation_percentage(flight_number: str, flight_date: str) -> float:
         + wind_speed * 3
         + history_percentage_origin / 100
     ) / (0.1 + 0.4 + 0.1 + 0.3)
+
+    percentage += model_response / 100
     return percentage
 
 
