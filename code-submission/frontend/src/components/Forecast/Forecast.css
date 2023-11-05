@@ -5,6 +5,7 @@
     justify-content: center;
     background-color: #C7D0D7;
     border: 5px solid black; /* Add black border */
+    flex-direction: column;
   }
   
 .title{
@@ -59,6 +60,12 @@
   
 .button:hover {
     background-color: #0056b3;
+}
+.flight-code{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    
 }
 
 .date-picker{

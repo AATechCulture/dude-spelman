@@ -1,8 +1,10 @@
 /* Style your components */
 
 *{
+    
     text-decoration: none;
 }
+
 
 .NavbarItems {
     display: flex;
@@ -25,6 +27,8 @@
     display: flex;
     justify-content: space-between;
     align-items: left;
+    font-family: 'Poppins', sans-serif;
+    font-family: 'Roboto Slab', serif;
 }
 .NavbarItems img{
     height: 100%;

@@ -1,0 +1,33 @@
+img { 
+    height: 150px; 
+    background-color: rgba(0, 0, 0, 0);
+}
+.rideshare-info{
+    margin-top: 150px;
+}
+.rideshare-logo{
+    max-width: 600px;
+    margin: auto;
+    margin-bottom: 2%;
+    padding: 10px;
+
+}
+
+
+
+.rideshare-logo, .IHG-logo, .Marriot-logo {
+    transition: box-shadow 0.3s; /* Add transition for smooth effect */
+}
+  
+.rideshare-logo:hover{
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); /* Shadow effect */
+}
+
+@media screen and (max-width:800px){
+
+    .rideshare-info-card{
+        flex-direction: column;
+    }
+    
+    
+}

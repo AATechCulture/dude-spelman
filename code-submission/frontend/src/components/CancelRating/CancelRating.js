@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
 import "./CancelRating.css";
-import axios from "axios";
 
-const CancelRating = () => {
-  const [flightNumber, setFlightNumber] = useState("");
-  const [flightDate, setFlightDate] = useState("");
-  const [percentage, setPercentage] = useState(null);
+const CancelRating = ({
+  
+}) => {
+  const [percentage, setPercentage] = useState(0);
 
   useEffect(() => {
     fetch(
@@ -27,10 +26,10 @@ const CancelRating = () => {
       <h2 className="rating-header">
         The chance of your flight being cancelled is:
       </h2>
-      <h1 className="rating">{percentage}%</h1>
+      <h1 className="rating">{percentage.toFixed(2)}%</h1>
       <p className="rating-explanation">
         The rating is the result of our flight cancellation algorithm which is
-        influenced by airport weather conditons.
+        influenced by airport weather conditions.
       </p>
     </div>
   );
