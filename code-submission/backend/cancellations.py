@@ -1,11 +1,9 @@
 import airportsdata
 import pandas as pd
-import weather_data
-from datetime import datetime, timedelta
-import os
 
 
 airports = airportsdata.load("IATA")
+# Top 25 Busiest Airports in the USA via IATA Airport Code
 top25AirCodes = [
     "ATL",
     "DFW",
@@ -109,8 +107,10 @@ def dateCleanup(incomingDate: str):
 
 def generateAirportLongLatDict():
     """
-    Desc: Generates a Dictionary with Airline Codes as Keys & Airline Long/Lats as Dictionary Values stored in a tuple.
-    Ex. "ATL": (33.63,84.42)
+    Desc: Generates a Dictionary with Airline Codes as Keys & Airport Long/Lats as Dictionary Values stored in a tuple.
+    Ex. {}"ATL": (33.63,84.42)}
+    Output:
+        Dictionary filled with Airline Codes & Airport Long/Lats
     """
     airportDict = {}
     for airportCode in top25AirCodes:
@@ -119,38 +119,3 @@ def generateAirportLongLatDict():
             round(airports[airportCode]["lon"], 2),
         )
     return airportDict
-
-
-def getWeatherBetweenDates(
-    start_date: datetime, end_date: datetime, lat: str, long: str
-):
-    """
-    (TODO: IGNORE, OUT OF DATE VERSION OF INITIAL HISTORICAL_WEATHER_DATA.PY IMPLEMENTATION)
-    """
-    current_date = start_date
-    while current_date.date() <= end_date.date():
-        iso_time = current_date.strftime("%Y-%m-%dT%H:%M:%S%z")
-        origin_weather = weather_data.get_weather_data(lat, long, iso_time)
-        temp = origin_weather["temperature"]
-        precipitation_prob = origin_weather["probabilityOfPrecipitation"][
-            "value"
-        ]
-        humidity = origin_weather["relativeHumidity"]["value"]
-        wind_speed = int(origin_weather["windSpeed"][0])
-        forecast = origin_weather["shortForecast"]
-
-        current_date += timedelta(days=1)
-
-
-def parseWeatherData():
-    """
-    (TODO: IGNORE, OUT OF DATE VERSION OF INITIAL HISTORICAL_WEATHER_DATA.PY IMPLEMENTATION)
-    """
-    airportDict = generateAirportLongLatDict()
-    for airCode in airportDict.keys():
-        getWeatherBetweenDates(
-            datetime(2020, 10, 1) + timedelta(hours=12),
-            datetime(2020, 10, 5) + timedelta(hours=12),
-            airportDict[airCode][0],
-            airportDict[airCode][1],
-        )
