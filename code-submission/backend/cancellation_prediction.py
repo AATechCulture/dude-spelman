@@ -3,6 +3,14 @@ import weather_data
 import cancellations
 import dateutil
 import datetime
+import tensorflow as tf
+
+
+def load_savedmodel(path: str):
+    model = tf.keras.models.Model()
+    savedmodel = tf.keras.models.load_model(path)
+
+    return savedmodel
 
 
 def get_cancellation_percentage(flight_number: str, flight_date: str) -> float:
@@ -89,6 +97,9 @@ def get_cancellation_percentage(flight_number: str, flight_date: str) -> float:
     """
     W_PoP * PoP + W_WS * WindSpeedScore + W_Temperature * TemperatureScore + W_RH * RelativeHumidity + W_Other * OtherConditionsScore) / (W_PoP + W_WS + W_Temperature + W_RH + W_Other
     """
+    
+    model = load_savedmodel("./model.h5")
+    # print(model)
 
     percentage = (
         temp * 0.1
@@ -100,9 +111,9 @@ def get_cancellation_percentage(flight_number: str, flight_date: str) -> float:
     return percentage
 
 
-# print(
-#     get_cancellation_percentage(
-#         "7373",
-#         "2023-11-05",
-#     )
-# )
+print(
+    get_cancellation_percentage(
+        "7373",
+        "2023-11-05",
+    )
+)

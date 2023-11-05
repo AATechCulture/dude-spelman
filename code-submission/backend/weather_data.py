@@ -1,10 +1,5 @@
 import requests
 
-# EXAMPLE variables
-# longitude = "47.45" [string]
-# latitude = "-122.31" [string]
-# departue_times = "2023-11-04T13:00:00-05:00" [string]
-
 def get_weather_data(longitude, latitude, departue_time):
     """
     Fetches weather data for a specific location and time.
@@ -28,5 +23,3 @@ def get_weather_data(longitude, latitude, departue_time):
         if departue_time >= period['startTime'] and departue_time <= period['endTime']:
             return period 
     return None
-
-# print(get_weather_data("47.45", "-122.31", "2023-11-04T13:00:00-05:00"))

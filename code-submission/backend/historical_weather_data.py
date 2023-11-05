@@ -12,6 +12,21 @@ openmeteo = openmeteo_requests.Client(session = retry_session)
 airpot_long_lat_dict = cancellations.generateAirportLongLatDict()
 
 def get_historical_weather_data(latitude, longitude, start_date, end_date):
+    """
+    Fetches historical weather data for a given geographical location and date range using the Open-Meteo API.
+
+    Parameters:
+        latitude (float): The latitude of the location.
+        longitude (float): The longitude of the location.
+        start_date (str): The start date for the data retrieval in 'YYYY-MM-DD' format.
+        end_date (str): The end date for the data retrieval in 'YYYY-MM-DD' format.
+
+    Returns:
+        list: A list of response objects containing weather data.
+
+    Raises:
+        OpenMeteoRequestsError: If the API request fails or returns an error.
+    """
 
     url = "https://archive-api.open-meteo.com/v1/archive"
 
@@ -29,7 +44,19 @@ def get_historical_weather_data(latitude, longitude, start_date, end_date):
 
 
 def create_csv_from_data_frame(responses, airport_codes):
-    
+    """
+    Processes a list of weather data responses and existing airport codes to create a merged CSV file containing both weather data and flight cancellation data.
+
+    Parameters:
+        responses (list): A list of response objects containing weather data.
+        airport_codes (list): A list of airport IATA codes corresponding to the weather data.
+
+    Outputs:
+        A CSV file named 'big_data.csv' containing the merged data.
+        The file is saved to the current working directory.
+    """
+
+
     master_data_frame = pd.DataFrame()
     for i, response in enumerate(responses):
         daily = response[0].Daily()
@@ -73,7 +100,7 @@ def create_csv_from_data_frame(responses, airport_codes):
     print(master_data_frame)
     
     merged_data = pd.merge(flight_data,master_data_frame, on=["date","airport"], how='outer')
-    merged_data.to_csv('New25.csv', index=False)
+    merged_data.to_csv('big_data.csv', index=False)
 
 responses = []
 keys = []
@@ -84,12 +111,11 @@ for key in airpot_long_lat_dict.keys():
 create_csv_from_data_frame(responses, keys)
 
 # trim the data set between to only include the years of 2018 and 2019
-
-df = pd.read_csv('backend/dataset/New25.csv')
+df = pd.read_csv('backend/dataset/big_data.csv')
 df['date'] = pd.to_datetime(df['date'], format='%m/%d/%y')
 
 start_date = pd.to_datetime('1/1/18')
 end_date = pd.to_datetime('12/31/19')
 
 df_filtered = df[(pd.to_datetime(df['date']) >= start_date) & (pd.to_datetime(df['date']) <= end_date)]
-df_filtered.to_csv('filtered_file.csv', index=False)
+df_filtered.to_csv('big_data.csv', index=False)

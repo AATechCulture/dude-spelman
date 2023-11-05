@@ -5,13 +5,6 @@ amadeus = Client(
     client_secret='QehM7zTGhLAwL6Ud'
 )
 
-# EXAMPLE variables
-# originLocationCode = 'MAD'
-# destinationLocationCode = 'BOS'
-# departureDate = '2023-11-06'
-# adults = '1'
-
-
 def get_flight_info(originLocationCode, destinationLocationCode, departureDate, adults):
     """
     Retrieves flight offers and pricing information for flights from a specified origin to a destination on a given date for a certain number of adults. 
@@ -53,5 +46,3 @@ def get_flight_info(originLocationCode, destinationLocationCode, departureDate, 
         print(f"Invalid requesst for flights from {originLocationCode} to {destinationLocationCode} on {departureDate} with {adults} adults.")
         print(error)
         raise error
-    
-# get_flight_info('MAD', 'BOS', '2023-11-06', '1')
