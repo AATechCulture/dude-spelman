@@ -1,7 +1,12 @@
 import React, { useState } from "react";
 import "./Forecast.css";
 
-const Forecast = () => {
+const Forecast = ({
+  flightNumber,
+  setFlightNumber,
+  flightDate,
+  setFlightDate,
+}) => {
   const [departureCode, setDepartureCode] = useState("");
   const [arrivalCode, setArrivalCode] = useState("");
   const [weatherData, setWeatherData] = useState(null);
@@ -15,6 +20,8 @@ const Forecast = () => {
   const handleArrivalDateChange = (e) => {
     setSelectedArrivalDate(e.target.value);
   };
+
+  const handleSubmit = () => {};
 
   return (
     <div className="forecast-container">
@@ -61,11 +68,11 @@ const Forecast = () => {
             value={selectedArrivalDate}
             onChange={handleArrivalDateChange}
           />
-          </div>
-          <br/>
-          <div className="submit"> <input className="submit-btn" type="submit" value="Submit"></input>
-          </div>
-          
+        </div>
+        <br />
+        <div className="submit">
+          <input className="submit-btn" type="submit" value="Submit"></input>
+        </div>
       </div>
       {/* For forecast info based on airport arrival city weatherData?*/}
     </div>
