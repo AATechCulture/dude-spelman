@@ -2,6 +2,15 @@
     margin: 4rem 6rem;
     color: #2a2a2a;
 }
+.irops-container{
+    
+    justify-content: center;
+    background-color: #C7D0D7;
+    margin: 60px;
+    padding-top: 1px;
+
+
+}
 
 .irops-info h1{
     font-size: 2rem;

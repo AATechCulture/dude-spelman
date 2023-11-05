@@ -1,3 +1,10 @@
+.forecast-container{
+    justify-content: center;
+    background-color: #C7D0D7;
+    margin: 0 60px;
+
+
+}
 .title{
     margin-top: 150px;
 

@@ -6,7 +6,7 @@ const Forecast = () => {
   const [arrivalCode, setArrivalCode] = useState("");
 
   return (
-    <div>
+    <div className="forecast-container">
       <h1 className="title">Pre-Cancellation Metrics</h1>
       <h2 className="sub-title">Departure Airport Forecast</h2>
       <div className="departure-code">

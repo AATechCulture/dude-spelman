@@ -9,7 +9,7 @@ import img3 from "../../assets/DFW.jpg";
 function IROPS() {
   return (
   <>
-    
+    <div className="irops-container">
     <div className="irops-info">
       <h1 className="irops-title">Why flights are canceled</h1>
 
@@ -51,6 +51,7 @@ function IROPS() {
           tight flight schedules. -Air Advisor"
         />
       </div>
+    </div>
     </div>
     </>
     );
