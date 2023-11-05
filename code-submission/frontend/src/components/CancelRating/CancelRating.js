@@ -13,7 +13,7 @@ const CancelRating = ({
     fetch(
       "/predict-cancellation?" +
         new URLSearchParams({
-          flight_number: 1234,
+          flight_number: 7373,
           flight_date: "2023-11-05",
         })
     )
