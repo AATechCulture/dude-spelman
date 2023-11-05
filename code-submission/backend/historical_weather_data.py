@@ -69,8 +69,9 @@ def create_csv_from_data_frame(responses, airport_codes):
         master_data_frame = pd.concat([master_data_frame, daily_dataframe], ignore_index=True)
 
     flight_data = pd.read_csv("backend/dataset/Top25-Flight-Weather-Interrupt.csv", sep=",")
+ 
     print(master_data_frame)
-    #merged_data = pd.concat([flight_data, master_data_frame] ,keys=["date", "airport"])
+    
     merged_data = pd.merge(flight_data,master_data_frame, on=["date","airport"], how='outer')
     merged_data.to_csv('New25.csv', index=False)
 
@@ -81,3 +82,14 @@ for key in airpot_long_lat_dict.keys():
     keys.append(key)
 
 create_csv_from_data_frame(responses, keys)
+
+# trim the data set between to only include the years of 2018 and 2019
+
+df = pd.read_csv('backend/dataset/New25.csv')
+df['date'] = pd.to_datetime(df['date'], format='%m/%d/%y')
+
+start_date = pd.to_datetime('1/1/18')
+end_date = pd.to_datetime('12/31/19')
+
+df_filtered = df[(pd.to_datetime(df['date']) >= start_date) & (pd.to_datetime(df['date']) <= end_date)]
+df_filtered.to_csv('filtered_file.csv', index=False)
