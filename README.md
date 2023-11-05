@@ -1,26 +1,32 @@
 # Dude Spelman AA Hack Submission
 
-___________
-# Project Name
+# Weather Wise
 
 ## Challenge Statement(s) Addressed 🎯
 - How might we inform customers of weather-related flight cancellations before they happen?
-- Once a flight is cancelled, how can we streamline the customer response, minimize wait times, and empower customers to destress and confidently take their next steps?
+- Once a flight is canceled, how can we streamline the customer response, minimize wait times, and empower customers to destress and confidently take their next steps?
 
 ## Project Description 🤯
-**....at lease 3 sentences describing what the project does and how it works**
+Inclement weather, including thunderstorms, snowstorms, heavy rainfall, strong gusts, and fog, can pose serious risks to flight safety, often resulting in cancellations. Leveraging machine learning techniques, we have developed predictive software capable of estimating the likelihood of flight cancellations. Weather Wise serves as a valuable resource, providing users with calculated probabilities of flight disruptions and aiding them in making informed decisions during irregular operations (IROPS), while also enhancing their understanding of such events.
 
 ## Project Value 💰
-**....at lease 3 sentences describing your target customer and tangible benefits from your solution**
+The primary target audience for Weather Wise includes frequent flyers, travel planners, and airline operational staff who require accurate forecasts to mitigate the impact of flight disruptions. By utilizing Weather Wise, they can benefit from real-time predictions, allowing for proactive planning and reduced downtime or delays associated with adverse weather conditions. Additionally, the tool offers educational insights into weather-related operational challenges, empowering users with knowledge to make informed travel decisions and improve overall travel experiences.
 
 
 ## Tech Overview 💻
 **... what tech was used to bring this project to life?**
 
-Example:
-* FastAPI
-* Hugging Face AI Models
-* Next.js
+React
+Flask
+
+National Weather Service (NWS) API
+Historical Weather API
+Amadeus flight information
+Uber API
+American Airlines Flight engine API
+
+
+
 
 
 ### ✨ Contributors ✨
@@ -30,10 +36,10 @@ Example:
 * Team member Z (AAdvantage No)
 
 ### School Name 🏫
-The ABC School
+Morehouse College
 
 ### Team Name 🏷
-Coding Costars
+Dude Spelman
 
 ### Link to Video Pitch 📹
 **...point us to where you tell us about your solution 😄**
